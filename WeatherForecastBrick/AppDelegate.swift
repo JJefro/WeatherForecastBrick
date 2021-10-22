@@ -8,6 +8,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 import SnapKit
+import NVActivityIndicatorView
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

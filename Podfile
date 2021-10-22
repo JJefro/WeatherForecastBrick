@@ -10,5 +10,6 @@ target 'WeatherForecastBrick' do
 pod 'R.swift'
 pod 'SnapKit', '~> 5.0.0'
 pod 'IQKeyboardManagerSwift'
+pod 'NVActivityIndicatorView'
 
 end
