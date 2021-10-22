@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Bold.otf">
+            <string>SFProDisplay-Bold</string>
+        </array>
+        <array key="SF-Pro-Display-Light.otf">
+            <string>SFProDisplay-Light</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="WeatherForecastBrick" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainView/background" translatesAutoresizingMaskIntoConstraints="NO" id="6Sv-us-wgo">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainView/Brick/normalBrick" translatesAutoresizingMaskIntoConstraints="NO" id="dVz-60-Ax4">
+                                <rect key="frame" x="95" y="0.0" width="224" height="455"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="224" id="7IP-hf-gnr"/>
+                                    <constraint firstAttribute="height" constant="455" id="PFp-U8-jVG"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="TxA-fs-4eH" userLabel="TemperatureLabel">
+                                <rect key="frame" x="16" y="461" width="126.5" height="132.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zEQ-bR-SD8" userLabel="Temperature">
+                                        <rect key="frame" x="0.0" y="0.0" width="126.5" height="99.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5I-gn-y4z">
+                                                <rect key="frame" x="0.0" y="0.0" width="95" height="99.5"/>
+                                                <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="83"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnv-QG-RoD">
+                                                <rect key="frame" x="95" y="0.0" width="31.5" height="99.5"/>
+                                                <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="83"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sunny" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wa-tc-hHD">
+                                        <rect key="frame" x="0.0" y="89.5" width="89.5" height="43"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="36"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainView/info" translatesAutoresizingMaskIntoConstraints="NO" id="QKF-ef-83i">
+                                <rect key="frame" x="119.5" y="836" width="175" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="175" id="TcT-bA-T9L"/>
+                                    <constraint firstAttribute="height" constant="60" id="XlX-HN-Q18"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INFO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czv-Eh-WW2">
+                                <rect key="frame" x="186.5" y="849.5" width="41.5" height="21.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TxA-fs-4eH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="4TU-6r-Sc5"/>
+                            <constraint firstItem="6Sv-us-wgo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8oa-oN-aVC"/>
+                            <constraint firstItem="6Sv-us-wgo" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Eim-s4-XWu"/>
+                            <constraint firstItem="dVz-60-Ax4" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LgS-Fs-Yq3"/>
+                            <constraint firstAttribute="bottom" secondItem="czv-Eh-WW2" secondAttribute="bottom" constant="25" id="VfD-cd-0oM"/>
+                            <constraint firstItem="TxA-fs-4eH" firstAttribute="top" secondItem="dVz-60-Ax4" secondAttribute="bottom" constant="6" id="Vzo-vZ-H87"/>
+                            <constraint firstItem="czv-Eh-WW2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Y81-mo-C42"/>
+                            <constraint firstItem="QKF-ef-83i" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aOS-P5-pp8"/>
+                            <constraint firstItem="6Sv-us-wgo" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="bPa-OO-PiX"/>
+                            <constraint firstItem="dVz-60-Ax4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jZe-NL-87Q"/>
+                            <constraint firstAttribute="bottom" secondItem="QKF-ef-83i" secondAttribute="bottom" id="l0e-fa-sJK"/>
+                            <constraint firstAttribute="bottom" secondItem="6Sv-us-wgo" secondAttribute="bottom" id="vDA-0t-ZgE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="brickImage" destination="dVz-60-Ax4" id="4D5-GF-ago"/>
+                        <outlet property="infoView" destination="QKF-ef-83i" id="gX9-bn-9R0"/>
+                        <outlet property="temperatureLabel" destination="L5I-gn-y4z" id="tpO-gf-CWX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="82.366071428571431"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="MainView/Brick/normalBrick" width="168" height="341"/>
+        <image name="MainView/background" width="375" height="811"/>
+        <image name="MainView/info" width="175" height="64"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
