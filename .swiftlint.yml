@@ -10,7 +10,7 @@ excluded:
 - SwiftLint/Common/3rdPartyLib
 - WeatherForecastBrick/SceneDelegate.swift
 - WeatherForecastBrick/MainView/Models/WeatherData.swift
-- WeatherForecastBrick/MainView/Models/Secrets.swift
+- WeatherForecastBrick/Secrets.swift
 - R.generated.swift
 line_length:
     warning: 170
@@ -35,3 +35,4 @@ cyclomatic_complexity:
     warning: 15
     error: 25
 reporter: "xcode"
+

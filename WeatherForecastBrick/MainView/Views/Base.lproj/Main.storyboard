@@ -14,6 +14,9 @@
         <array key="SF-Pro-Display-Light.otf">
             <string>SFProDisplay-Light</string>
         </array>
+        <array key="SF-Pro-Display-Semibold.otf">
+            <string>SFProDisplay-Semibold</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Main View Controller-->
@@ -35,27 +38,21 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="TxA-fs-4eH" userLabel="TemperatureLabel">
-                                <rect key="frame" x="16" y="461" width="126.5" height="132.5"/>
+                                <rect key="frame" x="16" y="461" width="17" height="132.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zEQ-bR-SD8" userLabel="Temperature">
-                                        <rect key="frame" x="0.0" y="0.0" width="126.5" height="99.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="17" height="99.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5I-gn-y4z">
-                                                <rect key="frame" x="0.0" y="0.0" width="95" height="99.5"/>
-                                                <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="83"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnv-QG-RoD">
-                                                <rect key="frame" x="95" y="0.0" width="31.5" height="99.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5I-gn-y4z">
+                                                <rect key="frame" x="0.0" y="0.0" width="17" height="99.5"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="83"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sunny" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wa-tc-hHD">
-                                        <rect key="frame" x="0.0" y="89.5" width="89.5" height="43"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wa-tc-hHD">
+                                        <rect key="frame" x="0.0" y="89.5" width="7.5" height="43"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="36"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -75,12 +72,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIJ-G5-Fsc">
+                                <rect key="frame" x="205.5" y="788.5" width="3.5" height="20.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="TxA-fs-4eH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="4TU-6r-Sc5"/>
                             <constraint firstItem="6Sv-us-wgo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8oa-oN-aVC"/>
+                            <constraint firstItem="cIJ-G5-Fsc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AOe-Pz-EbN"/>
+                            <constraint firstItem="QKF-ef-83i" firstAttribute="top" secondItem="cIJ-G5-Fsc" secondAttribute="bottom" constant="27" id="AQ3-r5-wnD"/>
                             <constraint firstItem="6Sv-us-wgo" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Eim-s4-XWu"/>
                             <constraint firstItem="dVz-60-Ax4" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LgS-Fs-Yq3"/>
                             <constraint firstAttribute="bottom" secondItem="czv-Eh-WW2" secondAttribute="bottom" constant="25" id="VfD-cd-0oM"/>
@@ -96,7 +101,9 @@
                     <connections>
                         <outlet property="brickImage" destination="dVz-60-Ax4" id="4D5-GF-ago"/>
                         <outlet property="infoView" destination="QKF-ef-83i" id="gX9-bn-9R0"/>
+                        <outlet property="place" destination="cIJ-G5-Fsc" id="GMc-Qg-TBU"/>
                         <outlet property="temperatureLabel" destination="L5I-gn-y4z" id="tpO-gf-CWX"/>
+                        <outlet property="weatherCondition" destination="5wa-tc-hHD" id="qNM-Ek-v8t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
