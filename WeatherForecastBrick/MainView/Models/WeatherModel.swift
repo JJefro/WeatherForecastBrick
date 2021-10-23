@@ -10,10 +10,11 @@ import Foundation
 struct WeatherModel {
 
     let conditionID: Int
+    let visibility: Int
     let cityName: String
     let temperature: Double
     let countryCode: String
-    let wind: Double
+    let windSpeed: Double
     let temperatureFeelsLike: Double
 
     var tempString: String {
@@ -28,24 +29,23 @@ struct WeatherModel {
 
     var conditionName: String {
         switch conditionID {
-        case 200 ... 299:
+        case 200...299:
             return WeatherCondition.thunderstorm
-        case 300 ... 399:
+        case 300...399:
             return WeatherCondition.drizzle
-        case 500 ... 599:
+        case 500...599:
             return WeatherCondition.raining
-        case 600 ... 699:
+        case 600...699:
             return WeatherCondition.snow
-        case 700 ... 780:
+        case 700...780:
             return WeatherCondition.fog
         case 781:
             return WeatherCondition.tornado
         case 800:
             return WeatherCondition.sunny
-        case 801 ... 899:
+        case 801...899:
             return WeatherCondition.clouds
-        default:
-            return ""
+        default: return "Unknown conditionID"
         }
     }
 }

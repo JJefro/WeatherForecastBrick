@@ -10,6 +10,7 @@ import CoreLocation
 
 protocol WeatherManagerDelegate: AnyObject {
     func updateWeather(_ weatherManager: WeatherManager, weather: WeatherModel)
+    func didFailWithError(error: Error)
 }
 
 struct WeatherManager {
@@ -18,7 +19,12 @@ struct WeatherManager {
     
     private let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=\(Secrets.apiKey)&units=metric"
 
-    func fetchData(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+    func fetchWeatherByCityName(cityName: String) {
+        let urlString = "\(weatherURL)&q=\(cityName)"
+        performRequest(with: urlString)
+    }
+
+    func fetchWeatherByLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         let urlString = "\(weatherURL)&lat=\(latitude)&lon=\(longitude)"
         performRequest(with: urlString)
     }
@@ -28,7 +34,7 @@ struct WeatherManager {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { data, _, error in
                 if error != nil {
-                    print(error!.localizedDescription)
+                    delegate?.didFailWithError(error: error!)
                     return
                 }
                 if let safeData = data {
@@ -47,15 +53,23 @@ struct WeatherManager {
             let decoderData = try decoder.decode(WeatherData.self, from: weatherData)
             let weatherID = decoderData.weather[0].id
             let city = decoderData.name
+            let visibility = decoderData.visibility
             let countryCode = decoderData.sys.country
-            let wind = decoderData.wind.speed
+            let windSpeed = decoderData.wind.speed
             let temp = decoderData.main.temp
             let tempFeelsLike = decoderData.main.feels_like
 
             return WeatherModel(
-                conditionID: weatherID, cityName: city, temperature: temp, countryCode: countryCode, wind: wind, temperatureFeelsLike: tempFeelsLike)
+                conditionID: weatherID,
+                visibility: visibility,
+                cityName: city,
+                temperature: temp,
+                countryCode: countryCode,
+                windSpeed: windSpeed,
+                temperatureFeelsLike: tempFeelsLike
+            )
         } catch {
-            print(error)
+            delegate?.didFailWithError(error: error)
             return nil
         }
     }
