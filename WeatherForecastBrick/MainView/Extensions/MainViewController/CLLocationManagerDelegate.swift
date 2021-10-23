@@ -15,11 +15,13 @@ extension MainViewController: CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation()
             let latitude = location.coordinate.latitude
             let longitude = location.coordinate.longitude
-            weatherManager.fetchData(latitude: latitude, longitude: longitude)
+            weatherManager.fetchWeatherByLocation(latitude: latitude, longitude: longitude)
         }
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        brickImage.isHidden = true
+        loadingView.isHidden = true
         print(error.localizedDescription)
     }
 }

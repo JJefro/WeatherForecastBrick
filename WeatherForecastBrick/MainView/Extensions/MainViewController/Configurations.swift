@@ -14,16 +14,16 @@ extension MainViewController {
         makeLoadingViewConstraints()
         bind()
     }
+    
+    private func bind() {
+        locationManager.delegate = self
+        weatherManager.delegate = self
+    }
 
     private func makeLoadingViewConstraints() {
         view.addSubview(loadingView)
         loadingView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-    }
-
-    private func bind() {
-        locationManager.delegate = self
-        weatherManager.delegate = self
     }
 }
