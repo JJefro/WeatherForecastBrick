@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -46,7 +47,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5I-gn-y4z">
                                                 <rect key="frame" x="0.0" y="0.0" width="17" height="99.5"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="83"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" name="MainView/textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -54,7 +55,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wa-tc-hHD">
                                         <rect key="frame" x="0.0" y="89.5" width="7.5" height="43"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="36"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="MainView/textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -69,27 +70,52 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INFO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czv-Eh-WW2">
                                 <rect key="frame" x="186.5" y="849.5" width="41.5" height="21.5"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="18"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="MainView/textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIJ-G5-Fsc">
-                                <rect key="frame" x="205.5" y="788.5" width="3.5" height="20.5"/>
-                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="CD7-Ks-kIV">
+                                <rect key="frame" x="158.5" y="778" width="97.5" height="31"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9lh-7F-wTH">
+                                        <rect key="frame" x="0.0" y="0.0" width="45.5" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="paperplane.fill" catalog="system">
+                                            <color key="baseForegroundColor" name="MainView/textColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="currentLocationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bs3-qb-bk8"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIJ-G5-Fsc">
+                                        <rect key="frame" x="47.5" y="0.0" width="3.5" height="31"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="17"/>
+                                        <color key="textColor" name="MainView/textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKw-4i-vkk">
+                                        <rect key="frame" x="53" y="0.0" width="44.5" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="magnifyingglass" catalog="system">
+                                            <color key="baseForegroundColor" name="MainView/textColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="searchButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Je2-AX-iiW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="TxA-fs-4eH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="4TU-6r-Sc5"/>
+                            <constraint firstItem="QKF-ef-83i" firstAttribute="top" secondItem="CD7-Ks-kIV" secondAttribute="bottom" constant="27" id="7Rs-7H-iUs"/>
                             <constraint firstItem="6Sv-us-wgo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8oa-oN-aVC"/>
-                            <constraint firstItem="cIJ-G5-Fsc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AOe-Pz-EbN"/>
-                            <constraint firstItem="QKF-ef-83i" firstAttribute="top" secondItem="cIJ-G5-Fsc" secondAttribute="bottom" constant="27" id="AQ3-r5-wnD"/>
                             <constraint firstItem="6Sv-us-wgo" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Eim-s4-XWu"/>
                             <constraint firstItem="dVz-60-Ax4" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LgS-Fs-Yq3"/>
                             <constraint firstAttribute="bottom" secondItem="czv-Eh-WW2" secondAttribute="bottom" constant="25" id="VfD-cd-0oM"/>
                             <constraint firstItem="TxA-fs-4eH" firstAttribute="top" secondItem="dVz-60-Ax4" secondAttribute="bottom" constant="6" id="Vzo-vZ-H87"/>
+                            <constraint firstItem="CD7-Ks-kIV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XMU-Qp-HqO"/>
                             <constraint firstItem="czv-Eh-WW2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Y81-mo-C42"/>
                             <constraint firstItem="QKF-ef-83i" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aOS-P5-pp8"/>
                             <constraint firstItem="6Sv-us-wgo" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="bPa-OO-PiX"/>
@@ -100,8 +126,10 @@
                     </view>
                     <connections>
                         <outlet property="brickImage" destination="dVz-60-Ax4" id="4D5-GF-ago"/>
+                        <outlet property="currentLocationButton" destination="9lh-7F-wTH" id="G6c-3g-iBP"/>
                         <outlet property="infoView" destination="QKF-ef-83i" id="gX9-bn-9R0"/>
                         <outlet property="place" destination="cIJ-G5-Fsc" id="GMc-Qg-TBU"/>
+                        <outlet property="searchButton" destination="kKw-4i-vkk" id="fJ7-nr-OdE"/>
                         <outlet property="temperatureLabel" destination="L5I-gn-y4z" id="tpO-gf-CWX"/>
                         <outlet property="weatherCondition" destination="5wa-tc-hHD" id="qNM-Ek-v8t"/>
                     </connections>
@@ -115,6 +143,11 @@
         <image name="MainView/Brick/normalBrick" width="168" height="341"/>
         <image name="MainView/background" width="375" height="811"/>
         <image name="MainView/info" width="175" height="64"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="paperplane.fill" catalog="system" width="128" height="118"/>
+        <namedColor name="MainView/textColor">
+            <color red="0.1764705882352941" green="0.1764705882352941" blue="0.1764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
