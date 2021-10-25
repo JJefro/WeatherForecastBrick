@@ -7,17 +7,29 @@
 
 import Foundation
 import SnapKit
+import CoreLocation
 
 extension MainViewController {
 
     func configure() {
-        makeLoadingViewConstraints()
         bind()
+        makeLoadingViewConstraints()
+        makeSearchViewConstraints()
     }
-    
+
     private func bind() {
-        locationManager.delegate = self
         weatherManager.delegate = self
+        searchView.delegate = self
+        locationManager.weatherManager = weatherManager
+    }
+
+    private func makeSearchViewConstraints() {
+        view.addSubview(searchView)
+        searchView.snp.makeConstraints { make in
+            make.left.right.equalTo(view).inset(20)
+            make.height.equalTo(100)
+            make.top.equalTo(infoView.snp.bottom)
+        }
     }
 
     private func makeLoadingViewConstraints() {
