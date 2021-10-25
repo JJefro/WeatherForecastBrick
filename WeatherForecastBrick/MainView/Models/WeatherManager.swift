@@ -14,21 +14,23 @@ protocol WeatherManagerDelegate: AnyObject {
 }
 
 struct WeatherManager {
-
+    
     weak var delegate: WeatherManagerDelegate?
     
     private let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=\(Secrets.apiKey)&units=metric"
-
+    
     func fetchWeatherByCityName(cityName: String) {
         let urlString = "\(weatherURL)&q=\(cityName)"
-        performRequest(with: urlString)
+        if !cityName.isEmpty {
+            performRequest(with: urlString)
+        }
     }
-
+    
     func fetchWeatherByLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         let urlString = "\(weatherURL)&lat=\(latitude)&lon=\(longitude)"
         performRequest(with: urlString)
     }
-
+    
     private func performRequest(with urlString: String) {
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)
@@ -46,7 +48,7 @@ struct WeatherManager {
             task.resume()
         }
     }
-
+    
     private func parseJSON(_ weatherData: Data) -> WeatherModel? {
         let decoder = JSONDecoder()
         do {
@@ -58,7 +60,7 @@ struct WeatherManager {
             let windSpeed = decoderData.wind.speed
             let temp = decoderData.main.temp
             let tempFeelsLike = decoderData.main.feels_like
-
+            
             return WeatherModel(
                 conditionID: weatherID,
                 visibility: visibility,

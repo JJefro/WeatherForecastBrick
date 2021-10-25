@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension MainViewController: WeatherManagerDelegate {
 
@@ -13,48 +14,58 @@ extension MainViewController: WeatherManagerDelegate {
         DispatchQueue.main.async { [self] in
             guard let area = weather.country else {return}
             temperatureLabel.text = weather.tempString
-            weatherCondition.text = weather.conditionName
-            place.text = "\(weather.cityName), \(area)"
+            weatherCondition.text = weather.condition.condition
+            areaLabel.text = "\(weather.cityName), \(area)"
 
-            changeBrickCondition(
-                condition: weather.conditionName,
-                feelsLike: weather.temperatureFeelsLike,
-                visibility: weather.visibility
-            )
-            loadingView.isHidden = true
-            print(weather.windSpeed)
+            UIView.transition(with: brickImage, duration: 1, options: [.transitionCrossDissolve]) { [self] in
+                changeBrickCondition(
+                    condition: weather.condition,
+                    tempFeelsLike: weather.temperatureFeelsLike,
+                    visibility: weather.visibility
+                )
+                loadingView.isHidden = true
+            } completion: { _ in
+                setBrickAnimation(with: weather.windSpeed)
+                searchButton.isEnabled = true
+            }
         }
     }
 
     func didFailWithError(error: Error) {
-        // If we have a problem with internet connection, brick disappears.
-        brickImage.isHidden = true
-        loadingView.isHidden = true
-        print(error.localizedDescription)
+        // If we have a problem with internet connection, brick disappears and we present Alert with error.
+        DispatchQueue.main.async { [self] in
+            brickImage.isHidden = true
+            loadingView.isHidden = true
+            searchButton.isEnabled = false
+            let alert = UIAlertController(title: "", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
+            alert.presentAlert()
+        }
     }
 
-    private func changeBrickCondition(condition: String, feelsLike: Double, visibility: Int) {
+    private func changeBrickCondition(condition: Weather, tempFeelsLike: Double, visibility: Int) {
         // If there is no problem with internet connection, brick appears.
         brickImage.isHidden = false
-        if condition == WeatherCondition.sunny, feelsLike > 30 {
+
+        if condition == .sunny, tempFeelsLike > 29 {
             brickImage.image = R.image.mainView.brick.cracksBrick()
         } else {
             switch condition {
-            case WeatherCondition.thunderstorm:
+            case .thunderstorm:
                 brickImage.image = R.image.mainView.brick.wetBrick()
-            case WeatherCondition.raining:
+            case .raining:
                 brickImage.image = R.image.mainView.brick.wetBrick()
-            case WeatherCondition.drizzle:
+            case .drizzle:
                 brickImage.image = R.image.mainView.brick.wetBrick()
-            case WeatherCondition.tornado:
+            case .tornado:
                 brickImage.image = R.image.mainView.brick.normalBrick()
-            case WeatherCondition.clouds:
+            case .clouds:
                 brickImage.image = R.image.mainView.brick.normalBrick()
-            case WeatherCondition.sunny:
+            case .sunny:
                 brickImage.image = R.image.mainView.brick.normalBrick()
-            case WeatherCondition.snow:
+            case .snow:
                 brickImage.image = R.image.mainView.brick.snowBrick()
-            case WeatherCondition.fog:
+            case .fog:
                 brickImage.layer.zPosition = -1
                 changeBrickVisibility(visibility)
             default: break
@@ -81,6 +92,16 @@ extension MainViewController: WeatherManagerDelegate {
         case 50...199:
             brickImage.alpha = 0.1
         default: brickImage.alpha = 0.05
+        }
+    }
+
+    private func setBrickAnimation(with windForce: Double) {
+        if windForce > 9 {
+            UIView.animate(withDuration: 1.5, delay: 0, options: [.repeat, .autoreverse]) { [self] in
+                brickImage.transform = CGAffineTransform(translationX: CGFloat(windForce * 3), y: 0)
+            }
+        } else {
+            brickImage.layer.removeAllAnimations()
         }
     }
 }

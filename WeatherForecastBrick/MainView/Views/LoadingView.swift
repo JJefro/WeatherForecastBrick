@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import NVActivityIndicatorView
 
-class WeatherLoadingView: UIView {
+class LoadingView: UIView {
 
     private var activityIndicator = NVActivityIndicatorView(
         frame: .zero,
@@ -27,6 +27,12 @@ class WeatherLoadingView: UIView {
         return blurView
     }()
 
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configureLoadingView()
+        isHidden = false
+    }
+
     override var isHidden: Bool {
         didSet {
             if isHidden {
@@ -35,12 +41,6 @@ class WeatherLoadingView: UIView {
                 activityIndicator.startAnimating()
             }
         }
-    }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configureLoadingView()
-        isHidden = false
     }
     
     required init?(coder: NSCoder) {
