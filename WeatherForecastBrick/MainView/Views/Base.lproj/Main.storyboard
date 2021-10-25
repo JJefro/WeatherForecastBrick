@@ -73,17 +73,17 @@
                                 <color key="textColor" name="MainView/textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="CD7-Ks-kIV">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="32K-XQ-WOi">
                                 <rect key="frame" x="158.5" y="778" width="97.5" height="31"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9lh-7F-wTH">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tcb-sg-wTf">
                                         <rect key="frame" x="0.0" y="0.0" width="45.5" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="paperplane.fill" catalog="system">
                                             <color key="baseForegroundColor" name="MainView/textColor"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="currentLocationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bs3-qb-bk8"/>
+                                            <action selector="getCurrentLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KQW-P9-G1c"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIJ-G5-Fsc">
@@ -92,14 +92,14 @@
                                         <color key="textColor" name="MainView/textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKw-4i-vkk">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G27-OP-6ze">
                                         <rect key="frame" x="53" y="0.0" width="44.5" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="magnifyingglass" catalog="system">
                                             <color key="baseForegroundColor" name="MainView/textColor"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="searchButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Je2-AX-iiW"/>
+                                            <action selector="searchButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LJr-ZA-mvm"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -109,13 +109,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="TxA-fs-4eH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="4TU-6r-Sc5"/>
-                            <constraint firstItem="QKF-ef-83i" firstAttribute="top" secondItem="CD7-Ks-kIV" secondAttribute="bottom" constant="27" id="7Rs-7H-iUs"/>
                             <constraint firstItem="6Sv-us-wgo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8oa-oN-aVC"/>
                             <constraint firstItem="6Sv-us-wgo" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Eim-s4-XWu"/>
+                            <constraint firstItem="QKF-ef-83i" firstAttribute="top" secondItem="32K-XQ-WOi" secondAttribute="bottom" constant="27" id="GCv-Xa-Kfm"/>
                             <constraint firstItem="dVz-60-Ax4" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LgS-Fs-Yq3"/>
                             <constraint firstAttribute="bottom" secondItem="czv-Eh-WW2" secondAttribute="bottom" constant="25" id="VfD-cd-0oM"/>
                             <constraint firstItem="TxA-fs-4eH" firstAttribute="top" secondItem="dVz-60-Ax4" secondAttribute="bottom" constant="6" id="Vzo-vZ-H87"/>
-                            <constraint firstItem="CD7-Ks-kIV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XMU-Qp-HqO"/>
+                            <constraint firstItem="32K-XQ-WOi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wfo-gh-1pk"/>
                             <constraint firstItem="czv-Eh-WW2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Y81-mo-C42"/>
                             <constraint firstItem="QKF-ef-83i" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aOS-P5-pp8"/>
                             <constraint firstItem="6Sv-us-wgo" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="bPa-OO-PiX"/>
@@ -125,11 +125,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="areaLabel" destination="cIJ-G5-Fsc" id="GMc-Qg-TBU"/>
                         <outlet property="brickImage" destination="dVz-60-Ax4" id="4D5-GF-ago"/>
-                        <outlet property="currentLocationButton" destination="9lh-7F-wTH" id="G6c-3g-iBP"/>
+                        <outlet property="currentLocationButton" destination="tcb-sg-wTf" id="SxK-Lo-ViS"/>
                         <outlet property="infoView" destination="QKF-ef-83i" id="gX9-bn-9R0"/>
-                        <outlet property="place" destination="cIJ-G5-Fsc" id="GMc-Qg-TBU"/>
-                        <outlet property="searchButton" destination="kKw-4i-vkk" id="fJ7-nr-OdE"/>
+                        <outlet property="searchButton" destination="G27-OP-6ze" id="CF5-kS-nEh"/>
                         <outlet property="temperatureLabel" destination="L5I-gn-y4z" id="tpO-gf-CWX"/>
                         <outlet property="weatherCondition" destination="5wa-tc-hHD" id="qNM-Ek-v8t"/>
                     </connections>
@@ -146,7 +146,7 @@
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="paperplane.fill" catalog="system" width="128" height="118"/>
         <namedColor name="MainView/textColor">
-            <color red="0.1764705882352941" green="0.1764705882352941" blue="0.1764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.17599999904632568" green="0.17599999904632568" blue="0.17599999904632568" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

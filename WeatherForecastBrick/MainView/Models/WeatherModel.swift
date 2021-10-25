@@ -27,25 +27,25 @@ struct WeatherModel {
         return current.localizedString(forRegionCode: countryCode)
     }
 
-    var conditionName: String {
+    var condition: Weather {
         switch conditionID {
-        case 200...299:
-            return WeatherCondition.thunderstorm
-        case 300...399:
-            return WeatherCondition.drizzle
-        case 500...599:
-            return WeatherCondition.raining
-        case 600...699:
-            return WeatherCondition.snow
-        case 700...780:
-            return WeatherCondition.fog
+        case 200 ... 299:
+            return .thunderstorm
+        case 300 ... 399:
+            return .drizzle
+        case 500 ... 599:
+            return .raining
+        case 600 ... 699:
+            return .snow
+        case 700 ... 780:
+            return .fog
         case 781:
-            return WeatherCondition.tornado
+            return .tornado
         case 800:
-            return WeatherCondition.sunny
-        case 801...899:
-            return WeatherCondition.clouds
-        default: return "Unknown conditionID"
+            return .sunny
+        case 801 ... 899:
+            return .clouds
+        default: return .unknown
         }
     }
 }

@@ -15,29 +15,44 @@ class MainViewController: UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var infoView: UIImageView!
     @IBOutlet weak var weatherCondition: UILabel!
-    @IBOutlet weak var place: UILabel!
+    @IBOutlet weak var areaLabel: UILabel!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var currentLocationButton: UIButton!
-    
-    var loadingView = WeatherLoadingView()
 
-    var weatherManager = WeatherManager()
-    var locationManager = CLLocationManager()
+    var loadingView = LoadingView()
+    var searchView = SearchView()
     
+    var weatherManager = WeatherManager()
+    var locationManager = LocationManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestLocation()
+    }
+
+    @IBAction func getCurrentLocation(_ sender: UIButton) {
+        loadingView.isHidden = false
+        locationManager.locationManager.requestLocation()
     }
 
     @IBAction func searchButtonTapped(_ sender: UIButton) {
-        brickImage.image = R.image.mainView.brick.wetBrick()
+        searchView.isHidden.toggle()
+        animateSearchView()
     }
-    
-    @IBAction func currentLocationButtonTapped(_ sender: UIButton) {
-        loadingView.isHidden = false
-        locationManager.requestLocation()
+
+    func animateSearchView() {
+        UIView.animate(withDuration: 1, delay: 0, options: []) { [self] in
+            if searchView.isHidden == false {
+                brickImage.transform = CGAffineTransform(translationX: 0, y: -300)
+                temperatureLabel.transform = CGAffineTransform(translationX: -300, y: 0)
+                weatherCondition.transform = CGAffineTransform(translationX: -300, y: 0)
+                searchView.transform = CGAffineTransform(translationX: 0, y: -view.frame.size.height / 2)
+            } else {
+                brickImage.transform = .identity
+                temperatureLabel.transform = .identity
+                weatherCondition.transform = .identity
+                searchView.transform = .identity
+            }
+        }
     }
 }
