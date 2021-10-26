@@ -16,6 +16,7 @@ extension MainViewController: WeatherManagerDelegate {
             temperatureLabel.text = weather.tempString
             weatherCondition.text = weather.condition.condition
             areaLabel.text = "\(weather.cityName), \(area)"
+            currentCity = weather.cityName
 
             UIView.transition(with: brickImage, duration: 1, options: [.transitionCrossDissolve]) { [self] in
                 changeBrickCondition(
@@ -23,10 +24,10 @@ extension MainViewController: WeatherManagerDelegate {
                     tempFeelsLike: weather.temperatureFeelsLike,
                     visibility: weather.visibility
                 )
-                loadingView.isHidden = true
             } completion: { _ in
                 setBrickAnimation(with: weather.windSpeed)
                 searchButton.isEnabled = true
+                loadingView.isHidden = true
             }
         }
     }
@@ -37,9 +38,9 @@ extension MainViewController: WeatherManagerDelegate {
             brickImage.isHidden = true
             loadingView.isHidden = true
             searchButton.isEnabled = false
-            let alert = UIAlertController(title: "", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
-            alert.presentAlert()
+            alert.showAlert()
         }
     }
 

@@ -18,12 +18,10 @@ struct WeatherManager {
     weak var delegate: WeatherManagerDelegate?
     
     private let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=\(Secrets.apiKey)&units=metric"
-    
+
     func fetchWeatherByCityName(cityName: String) {
         let urlString = "\(weatherURL)&q=\(cityName)"
-        if !cityName.isEmpty {
-            performRequest(with: urlString)
-        }
+        performRequest(with: urlString)
     }
     
     func fetchWeatherByLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
