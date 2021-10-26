@@ -10,7 +10,7 @@ import UIKit
 
 extension UIAlertController {
 
-    func presentAlert() {
+    func showAlert() {
         let keywindow = UIApplication.shared.connectedScenes.filter({$0.activationState == .foregroundActive})
             .compactMap({$0 as? UIWindowScene})
             .first?.windows

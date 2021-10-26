@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -31,7 +31,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainView/background" translatesAutoresizingMaskIntoConstraints="NO" id="6Sv-us-wgo">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainView/Brick/normalBrick" translatesAutoresizingMaskIntoConstraints="NO" id="dVz-60-Ax4">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainView/Brick/normalBrick" translatesAutoresizingMaskIntoConstraints="NO" id="dVz-60-Ax4">
                                 <rect key="frame" x="95" y="0.0" width="224" height="455"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="224" id="7IP-hf-gnr"/>
@@ -60,17 +60,18 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainView/info" translatesAutoresizingMaskIntoConstraints="NO" id="QKF-ef-83i">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainView/infoView/infoBackgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="QKF-ef-83i">
                                 <rect key="frame" x="119.5" y="836" width="175" height="60"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="175" id="TcT-bA-T9L"/>
                                     <constraint firstAttribute="height" constant="60" id="XlX-HN-Q18"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INFO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czv-Eh-WW2">
-                                <rect key="frame" x="186.5" y="849.5" width="41.5" height="21.5"/>
+                                <rect key="frame" x="186.5" y="852" width="41.5" height="21.5"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="18"/>
-                                <color key="textColor" name="MainView/textColor"/>
+                                <color key="textColor" red="0.1764705882352941" green="0.1764705882352941" blue="0.1764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="32K-XQ-WOi">
@@ -112,8 +113,8 @@
                             <constraint firstItem="6Sv-us-wgo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8oa-oN-aVC"/>
                             <constraint firstItem="6Sv-us-wgo" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Eim-s4-XWu"/>
                             <constraint firstItem="QKF-ef-83i" firstAttribute="top" secondItem="32K-XQ-WOi" secondAttribute="bottom" constant="27" id="GCv-Xa-Kfm"/>
+                            <constraint firstItem="czv-Eh-WW2" firstAttribute="top" secondItem="QKF-ef-83i" secondAttribute="top" constant="16" id="ISa-MV-Zb2"/>
                             <constraint firstItem="dVz-60-Ax4" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LgS-Fs-Yq3"/>
-                            <constraint firstAttribute="bottom" secondItem="czv-Eh-WW2" secondAttribute="bottom" constant="25" id="VfD-cd-0oM"/>
                             <constraint firstItem="TxA-fs-4eH" firstAttribute="top" secondItem="dVz-60-Ax4" secondAttribute="bottom" constant="6" id="Vzo-vZ-H87"/>
                             <constraint firstItem="32K-XQ-WOi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wfo-gh-1pk"/>
                             <constraint firstItem="czv-Eh-WW2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Y81-mo-C42"/>
@@ -128,7 +129,8 @@
                         <outlet property="areaLabel" destination="cIJ-G5-Fsc" id="GMc-Qg-TBU"/>
                         <outlet property="brickImage" destination="dVz-60-Ax4" id="4D5-GF-ago"/>
                         <outlet property="currentLocationButton" destination="tcb-sg-wTf" id="SxK-Lo-ViS"/>
-                        <outlet property="infoView" destination="QKF-ef-83i" id="gX9-bn-9R0"/>
+                        <outlet property="infoView" destination="QKF-ef-83i" id="2KJ-U2-d5P"/>
+                        <outlet property="infoViewTitle" destination="czv-Eh-WW2" id="izS-Vf-v25"/>
                         <outlet property="searchButton" destination="G27-OP-6ze" id="CF5-kS-nEh"/>
                         <outlet property="temperatureLabel" destination="L5I-gn-y4z" id="tpO-gf-CWX"/>
                         <outlet property="weatherCondition" destination="5wa-tc-hHD" id="qNM-Ek-v8t"/>
@@ -142,7 +144,7 @@
     <resources>
         <image name="MainView/Brick/normalBrick" width="168" height="341"/>
         <image name="MainView/background" width="375" height="811"/>
-        <image name="MainView/info" width="175" height="64"/>
+        <image name="MainView/infoView/infoBackgroundImage" width="175" height="64"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="paperplane.fill" catalog="system" width="128" height="118"/>
         <namedColor name="MainView/textColor">
