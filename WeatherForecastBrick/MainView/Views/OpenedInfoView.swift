@@ -22,11 +22,17 @@ class OpenedInfoView: UIView {
     }
 
     private func configureOpenedInfoView() {
-        self.backgroundColor = R.color.mainView.infoView.infoViewBackgroundColor()
-        self.layer.cornerRadius = 25
+        self.backgroundColor = R.color.mainView.infoView.infoViewShadow()
+        self.layer.cornerRadius = 15
         self.clipsToBounds = true
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 8)
+        self.layer.shadowOpacity = 0.7
+        self.layer.shadowRadius = 15
         makeLabelsConstraints()
         makeButtonConstraints()
+        makeBackgroundViewConstraints()
     }
 
     let button: UIButton = {
@@ -50,6 +56,22 @@ class OpenedInfoView: UIView {
             make.width.equalTo(115)
             make.centerX.equalToSuperview()
         }
+    }
+
+    private let backgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = R.color.mainView.infoView.infoViewBackgroundColor()
+        view.layer.cornerRadius = 15
+        return view
+    }()
+
+    private func makeBackgroundViewConstraints() {
+        self.addSubview(backgroundView)
+        backgroundView.snp.makeConstraints { make in
+            make.top.bottom.left.equalTo(self)
+            make.right.equalTo(self).offset(-8)
+        }
+        self.sendSubviewToBack(backgroundView)
     }
 
     private let title: UILabel = {
