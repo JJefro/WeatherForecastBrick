@@ -11,24 +11,23 @@ import UIKit
 extension MainViewController: WeatherManagerDelegate {
 
     func updateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
-        DispatchQueue.main.async { [self] in
-            guard let area = weather.country else {return}
-            temperatureLabel.text = weather.tempString
-            weatherCondition.text = weather.condition.condition
-            areaLabel.text = "\(weather.cityName), \(area)"
-            currentCity = weather.cityName
+        guard let area = weather.country else {return}
+        temperatureLabel.text = weather.tempString
+        weatherCondition.text = weather.condition.condition
+        areaLabel.text = "\(weather.cityName), \(area)"
+        currentCity = weather.cityName
 
-            UIView.transition(with: brickImage, duration: 1, options: [.transitionCrossDissolve]) { [self] in
-                changeBrickCondition(
-                    condition: weather.condition,
-                    tempFeelsLike: weather.temperatureFeelsLike,
-                    visibility: weather.visibility
-                )
-            } completion: { _ in
-                setBrickAnimation(with: weather.windSpeed)
-                searchButton.isEnabled = true
-                loadingView.isHidden = true
-            }
+        UIView.transition(with: brickImage, duration: 1, options: [.transitionCrossDissolve]) { [self] in
+            changeBrickCondition(
+                condition: weather.condition,
+                tempFeelsLike: weather.temperatureFeelsLike,
+                visibility: weather.visibility
+            )
+        } completion: { [self] _ in
+            setBrickAnimation(with: weather.windSpeed)
+            searchButton.isEnabled = true
+            loadingView.isHidden = true
+            brickImage.isHidden = false
         }
     }
 
@@ -97,9 +96,17 @@ extension MainViewController: WeatherManagerDelegate {
     }
 
     private func setBrickAnimation(with windForce: Double) {
-        if windForce > 9 {
-            UIView.animate(withDuration: 1.5, delay: 0, options: [.repeat, .autoreverse]) { [self] in
-                brickImage.transform = CGAffineTransform(translationX: CGFloat(windForce * 3), y: 0)
+        let numberOfFrames: Double = 2
+        let frameDuration = Double(1 / numberOfFrames)
+        if windForce > 5 {
+            brickImage.setAnchorPoint(CGPoint(x: 0.5, y: -0.5))
+            UIView.animateKeyframes(withDuration: 1.5, delay: 0, options: [.autoreverse, .repeat, .allowUserInteraction]) {
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: frameDuration) {
+                    self.brickImage.transform = CGAffineTransform(rotationAngle: .pi / 8)
+                }
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: frameDuration * 2) {
+                    self.brickImage.transform = CGAffineTransform(rotationAngle: -(.pi / 8))
+                }
             }
         } else {
             brickImage.layer.removeAllAnimations()

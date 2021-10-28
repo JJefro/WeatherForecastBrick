@@ -7,7 +7,6 @@
 
 import UIKit
 import CoreLocation
-import NVActivityIndicatorView
 
 class MainViewController: UIViewController {
 
@@ -24,9 +23,10 @@ class MainViewController: UIViewController {
 
     var loadingView = LoadingView()
     var searchView = SearchView()
-    
+
     var weatherManager = WeatherManager()
     var locationManager = LocationManager()
+
     var currentCity = String()
 
     override func viewDidLoad() {
@@ -34,12 +34,13 @@ class MainViewController: UIViewController {
         configure()
         openedInfoView.button.addTarget(self, action: #selector(infoViewButtonTapped(_:)), for: .touchUpInside)
         addTapGesture(view: infoView)
-        addDownSwipeGesture(view: brickImage)
+        addPanGesture(view: brickImage)
     }
 
     @IBAction func getCurrentLocation(_ sender: UIButton) {
         loadingView.isHidden = false
-        locationManager.locationManager.requestLocation()
+        brickImage.isHidden = true
+        locationManager.requestLocation()
     }
 
     @IBAction func searchButtonTapped(_ sender: UIButton) {
@@ -53,15 +54,21 @@ class MainViewController: UIViewController {
         view.addGestureRecognizer(tap)
     }
 
-    private func addDownSwipeGesture(view: UIView) {
-        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(handleDownSwipe(_:)))
-        swipe.direction = .down
-        view.addGestureRecognizer(swipe)
+    private func addPanGesture(view: UIView) {
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+        view.addGestureRecognizer(pan)
     }
 
-    @objc func handleDownSwipe(_ sender: UISwipeGestureRecognizer) {
-        loadingView.isHidden = false
-        weatherManager.fetchWeatherByCityName(cityName: currentCity)
+    @objc func handlePanGesture(_ sender: UIPanGestureRecognizer) {
+        UIView.animate(withDuration: 0.3) { [self] in
+            brickImage.transform = CGAffineTransform(translationX: 0, y: -10)
+            if sender.state == .ended {
+                loadingView.isHidden = false
+                weatherManager.fetchWeatherByCityName(cityName: currentCity)
+            }
+        } completion: { _ in
+            self.brickImage.transform = .identity
+        }
     }
 
     @objc func handleSingleTap(_ sender: UITapGestureRecognizer) {
@@ -72,5 +79,12 @@ class MainViewController: UIViewController {
     @objc func infoViewButtonTapped(_ sender: UIButton) {
         openedInfoView.isHidden = true
         animateInfoView()
+    }
+}
+
+extension MainViewController: LocationManagerDelegate {
+
+    func getLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        weatherManager.fetchWeatherByLocation(latitude: latitude, longitude: longitude)
     }
 }

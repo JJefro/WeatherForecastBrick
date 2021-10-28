@@ -17,6 +17,16 @@ struct WeatherModel {
     let windSpeed: Double
     let temperatureFeelsLike: Double
 
+    init(data: WeatherData) {
+        conditionID = data.weather[0].id
+        visibility = data.visibility
+        cityName = data.name
+        temperature = data.main.temp
+        countryCode = data.sys.country
+        windSpeed = data.wind.speed
+        temperatureFeelsLike = data.main.feels_like
+    }
+    
     var tempString: String {
         let temp = String(format: "%.0f", temperature)
         return "\(temp)°"
@@ -28,24 +38,6 @@ struct WeatherModel {
     }
 
     var condition: Weather {
-        switch conditionID {
-        case 200 ... 299:
-            return .thunderstorm
-        case 300 ... 399:
-            return .drizzle
-        case 500 ... 599:
-            return .raining
-        case 600 ... 699:
-            return .snow
-        case 700 ... 780:
-            return .fog
-        case 781:
-            return .tornado
-        case 800:
-            return .sunny
-        case 801 ... 899:
-            return .clouds
-        default: return .unknown
-        }
+        return Weather(condition: conditionID) ?? .unknown
     }
 }
