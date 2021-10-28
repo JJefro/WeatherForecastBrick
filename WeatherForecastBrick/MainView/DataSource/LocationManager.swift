@@ -8,10 +8,14 @@
 import UIKit
 import CoreLocation
 
+protocol LocationManagerDelegate: AnyObject {
+    func getLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees)
+}
+
 class LocationManager: NSObject, CLLocationManagerDelegate {
 
+    weak var delegate: LocationManagerDelegate?
     var locationManager = CLLocationManager()
-    var weatherManager: WeatherManager!
 
     override init() {
         super.init()
@@ -26,12 +30,16 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         locationManager.startUpdatingLocation()
     }
 
+    func requestLocation() {
+        locationManager.requestLocation()
+    }
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             locationManager.stopUpdatingLocation()
             let latitude = location.coordinate.latitude
             let longitude = location.coordinate.longitude
-            weatherManager.fetchWeatherByLocation(latitude: latitude, longitude: longitude)
+            delegate?.getLocation(latitude: latitude, longitude: longitude)
         }
     }
 

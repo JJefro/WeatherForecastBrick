@@ -11,10 +11,10 @@ import UIKit
 extension UIAlertController {
 
     func showAlert() {
-        let keywindow = UIApplication.shared.connectedScenes.filter({$0.activationState == .foregroundActive})
-            .compactMap({$0 as? UIWindowScene})
+        let keywindow = UIApplication.shared.connectedScenes.filter({ $0.activationState == .foregroundActive })
+            .compactMap({ $0 as? UIWindowScene })
             .first?.windows
-            .filter({$0.isKeyWindow}).first
+            .first(where: { $0.isKeyWindow })
         if var viewController = keywindow?.rootViewController {
             while let presentedViewController = viewController.presentedViewController {
                 viewController = presentedViewController

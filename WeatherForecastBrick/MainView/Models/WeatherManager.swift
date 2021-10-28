@@ -39,7 +39,9 @@ struct WeatherManager {
                 }
                 if let safeData = data {
                     if let weather = parseJSON(safeData) {
-                        delegate?.updateWeather(self, weather: weather)
+                        DispatchQueue.main.async {
+                            delegate?.updateWeather(self, weather: weather)
+                        }
                     }
                 }
             }
@@ -51,23 +53,7 @@ struct WeatherManager {
         let decoder = JSONDecoder()
         do {
             let decoderData = try decoder.decode(WeatherData.self, from: weatherData)
-            let weatherID = decoderData.weather[0].id
-            let city = decoderData.name
-            let visibility = decoderData.visibility
-            let countryCode = decoderData.sys.country
-            let windSpeed = decoderData.wind.speed
-            let temp = decoderData.main.temp
-            let tempFeelsLike = decoderData.main.feels_like
-            
-            return WeatherModel(
-                conditionID: weatherID,
-                visibility: visibility,
-                cityName: city,
-                temperature: temp,
-                countryCode: countryCode,
-                windSpeed: windSpeed,
-                temperatureFeelsLike: tempFeelsLike
-            )
+            return WeatherModel(data: decoderData)
         } catch {
             delegate?.didFailWithError(error: error)
             return nil
