@@ -18,7 +18,33 @@ enum Weather {
     case clouds
     case unknown
 
-    init?(condition: Int) {
+    var condition: String {
+        switch self {
+        case .thunderstorm:
+            return R.string.localizable.weatherCondition_thunderstorm()
+        case .drizzle:
+            return R.string.localizable.weatherCondition_drizzle()
+        case .raining:
+            return R.string.localizable.weatherCondition_raining()
+        case .snow:
+            return R.string.localizable.weatherCondition_snow()
+        case .fog:
+            return R.string.localizable.weatherCondition_fog()
+        case .tornado:
+            return R.string.localizable.weatherCondition_tornado()
+        case .sunny:
+            return R.string.localizable.weatherCondition_sunny()
+        case .clouds:
+            return R.string.localizable.weatherCondition_clouds()
+        case .unknown:
+            return R.string.localizable.weatherCondition_unknown()
+        }
+    }
+}
+
+extension Weather {
+    
+    init(condition: Int) {
         switch condition {
         case 200...299:    self = .thunderstorm
         case 300...399:    self = .drizzle
@@ -29,29 +55,6 @@ enum Weather {
         case 800:          self = .sunny
         case 801...899:    self = .clouds
         default:           self = .unknown
-        }
-    }
-
-    var condition: String {
-        switch self {
-        case .thunderstorm:
-            return "thunderstorm"
-        case .drizzle:
-            return "drizzle"
-        case .raining:
-            return "raining"
-        case .snow:
-            return "snow"
-        case .fog:
-            return "fog"
-        case .tornado:
-            return "tornado"
-        case .sunny:
-            return "sunny"
-        case .clouds:
-            return "clouds"
-        case .unknown:
-            return "unknown"
         }
     }
 }

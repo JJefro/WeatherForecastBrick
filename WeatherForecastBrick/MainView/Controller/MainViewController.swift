@@ -12,14 +12,14 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var brickImage: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
-    @IBOutlet weak var infoView: UIImageView!
-    @IBOutlet weak var infoViewTitle: UILabel!
+    @IBOutlet weak var info: UIImageView!
+    @IBOutlet weak var infoTitle: UILabel!
     @IBOutlet weak var weatherCondition: UILabel!
     @IBOutlet weak var areaLabel: UILabel!
-    @IBOutlet weak var searchButton: UIButton!
-    @IBOutlet weak var currentLocationButton: UIButton!
+    @IBOutlet weak var searchButton: CardButton!
+    @IBOutlet weak var currentLocationButton: CardButton!
 
-    var openedInfoView = OpenedInfoView()
+    var infoView = InfoView()
 
     var loadingView = LoadingView()
     var searchView = SearchView()
@@ -32,8 +32,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        openedInfoView.button.addTarget(self, action: #selector(infoViewButtonTapped(_:)), for: .touchUpInside)
-        addTapGesture(view: infoView)
+        infoView.button.addTarget(self, action: #selector(infoViewButtonTapped(_:)), for: .touchUpInside)
+        addTapGesture(view: info)
         addPanGesture(view: brickImage)
     }
 
@@ -60,10 +60,11 @@ class MainViewController: UIViewController {
     }
 
     @objc func handlePanGesture(_ sender: UIPanGestureRecognizer) {
-        UIView.animate(withDuration: 0.3) { [self] in
+        UIView.animate(withDuration: 0.5) { [self] in
             brickImage.transform = CGAffineTransform(translationX: 0, y: -10)
             if sender.state == .ended {
                 loadingView.isHidden = false
+                brickImage.transform = CGAffineTransform(translationX: 0, y: 0)
                 weatherManager.fetchWeatherByCityName(cityName: currentCity)
             }
         } completion: { _ in
@@ -72,19 +73,30 @@ class MainViewController: UIViewController {
     }
 
     @objc func handleSingleTap(_ sender: UITapGestureRecognizer) {
-        openedInfoView.isHidden = false
+        infoView.isHidden = false
         animateInfoView()
     }
 
     @objc func infoViewButtonTapped(_ sender: UIButton) {
-        openedInfoView.isHidden = true
+        infoView.isHidden = true
         animateInfoView()
     }
 }
 
+// MARK: - LocationManager Delegate
 extension MainViewController: LocationManagerDelegate {
 
     func getLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         weatherManager.fetchWeatherByLocation(latitude: latitude, longitude: longitude)
+    }
+}
+
+// MARK: - SearchView Delegate
+extension MainViewController: SearchViewDelegate {
+
+    func getSearchViewText(text: String) {
+        weatherManager.fetchWeatherByCityName(cityName: text)
+        searchView.isHidden = true
+        animateSearchView()
     }
 }

@@ -19,6 +19,7 @@ extension MainViewController {
         makeSearchViewConstraints()
         makeOpenedInfoViewConstraints()
         brickImage.layer.zPosition = 1
+        infoTitle.text = R.string.localizable.infoView_title()
     }
 
     private func bind() {
@@ -29,8 +30,8 @@ extension MainViewController {
 
     // MARK: - Opened Info View Constraints
     private func makeOpenedInfoViewConstraints() {
-        view.addSubview(openedInfoView)
-        openedInfoView.snp.makeConstraints { make in
+        view.addSubview(infoView)
+        infoView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.width.equalTo(277)
             make.height.equalTo(372)
@@ -43,7 +44,7 @@ extension MainViewController {
         searchView.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(20)
             make.height.equalTo(100)
-            make.top.equalTo(infoView.snp.bottom)
+            make.top.equalTo(info.snp.bottom)
         }
     }
 

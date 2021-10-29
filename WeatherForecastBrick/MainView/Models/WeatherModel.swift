@@ -16,16 +16,6 @@ struct WeatherModel {
     let countryCode: String
     let windSpeed: Double
     let temperatureFeelsLike: Double
-
-    init(data: WeatherData) {
-        conditionID = data.weather[0].id
-        visibility = data.visibility
-        cityName = data.name
-        temperature = data.main.temp
-        countryCode = data.sys.country
-        windSpeed = data.wind.speed
-        temperatureFeelsLike = data.main.feels_like
-    }
     
     var tempString: String {
         let temp = String(format: "%.0f", temperature)
@@ -38,6 +28,19 @@ struct WeatherModel {
     }
 
     var condition: Weather {
-        return Weather(condition: conditionID) ?? .unknown
+        return Weather(condition: conditionID)
+    }
+}
+
+extension WeatherModel {
+
+    init(data: WeatherData) {
+        conditionID = data.weather[0].id
+        visibility  = data.visibility
+        cityName    = data.name
+        temperature = data.main.temp
+        countryCode = data.sys.country
+        windSpeed   = data.wind.speed
+        temperatureFeelsLike = data.main.feels_like
     }
 }

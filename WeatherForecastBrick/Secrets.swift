@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Secrets {
 
@@ -18,7 +19,7 @@ struct Secrets {
             guard let value = plist?.object(forKey: "Weather API key") as? String else {
                 fatalError("Couldn't find key 'Weather API key' in 'Secrets.plist'.")
             }
-            if (value.starts(with: "_")) {
+            if value == "YOUR_API_KEY" {
                 fatalError("Register for a developer account and get an API key")
             }
             return value
