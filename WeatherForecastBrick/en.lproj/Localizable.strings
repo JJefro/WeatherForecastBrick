@@ -1,0 +1,30 @@
+/* 
+ Localizable.strings
+ WeatherForecastBrick
+
+ Created by Jevgenijs Jefrosinins on 28/10/2021.
+
+ */
+
+"infoView_title"            = "INFO";
+"infoView_rain_label"       = "Brick is wet - raining";
+"infoView_sun_label"        = "Brick is dry - sunny";
+"infoView_fog_label"        = "Brick is hard to see - fog";
+"infoView_hot_label"        = "Brick with cracks - very hot";
+"infoView_snow_label"       = "Brick with snow - snow";
+"infoView_wind_label"       = "Brick is swinging - windy";
+"infoView_noInternet_label" = "Brick is gone - No Internet";
+"infoView_buttonTitle"      = "Hide";
+
+"weatherCondition_thunderstorm" = "thunderstorm";
+"weatherCondition_drizzle"      = "drizzle";
+"weatherCondition_raining"      = "raining";
+"weatherCondition_snow"         = "snow";
+"weatherCondition_fog"          = "fog";
+"weatherCondition_tornado"      = "tornado";
+"weatherCondition_sunny"        = "sunny";
+"weatherCondition_clouds"       = "clouds";
+"weatherCondition_unknown"      = "unknown";
+
+"searchInfo_title"       = "City:";
+"searchInfo_placeholder" = "Type city name...";

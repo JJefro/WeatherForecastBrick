@@ -25,9 +25,9 @@ extension MainViewController: WeatherManagerDelegate {
             )
         } completion: { [self] _ in
             setBrickAnimation(with: weather.windSpeed)
-            searchButton.isEnabled = true
-            loadingView.isHidden = true
-            brickImage.isHidden = false
+                searchButton.isEnabled = true
+                loadingView.isHidden = true
+                brickImage.isHidden = false
         }
     }
 
@@ -44,9 +44,6 @@ extension MainViewController: WeatherManagerDelegate {
     }
 
     private func changeBrickCondition(condition: Weather, tempFeelsLike: Double, visibility: Int) {
-        // If there is no problem with internet connection, brick appears.
-        brickImage.isHidden = false
-
         if condition == .sunny, tempFeelsLike > 29 {
             brickImage.image = R.image.mainView.brick.cracksBrick()
         } else {
@@ -94,22 +91,37 @@ extension MainViewController: WeatherManagerDelegate {
         default: brickImage.alpha = 0.05
         }
     }
-
+    
     private func setBrickAnimation(with windForce: Double) {
+        switch windForce {
+        case 30...:
+            animateBrick(with: 4)
+        case 21...29:
+            animateBrick(with: 6)
+        case 15...20:
+            animateBrick(with: 8)
+        case 11...14:
+            animateBrick(with: 10)
+        case 7...10:
+            animateBrick(with: 12)
+        default: brickImage.layer.removeAllAnimations()
+        }
+    }
+
+    private func animateBrick(with number: CGFloat) {
         let numberOfFrames: Double = 2
         let frameDuration = Double(1 / numberOfFrames)
-        if windForce > 5 {
-            brickImage.setAnchorPoint(CGPoint(x: 0.5, y: -0.5))
-            UIView.animateKeyframes(withDuration: 1.5, delay: 0, options: [.autoreverse, .repeat, .allowUserInteraction]) {
-                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: frameDuration) {
-                    self.brickImage.transform = CGAffineTransform(rotationAngle: .pi / 8)
-                }
-                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: frameDuration * 2) {
-                    self.brickImage.transform = CGAffineTransform(rotationAngle: -(.pi / 8))
-                }
+
+        brickImage.setAnchorPoint(CGPoint(x: 0.5, y: -0.5))
+        brickImage.layer.position = CGPoint(x: 195, y: -227.5)
+        UIView.animateKeyframes(withDuration: 1.5, delay: 0, options: [.autoreverse, .repeat, .allowUserInteraction]) {
+
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: frameDuration) {
+                self.brickImage.transform = CGAffineTransform(rotationAngle: .pi / number)
             }
-        } else {
-            brickImage.layer.removeAllAnimations()
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: frameDuration * 2) {
+                self.brickImage.transform = CGAffineTransform(rotationAngle: -(.pi / number))
+            }
         }
     }
 }

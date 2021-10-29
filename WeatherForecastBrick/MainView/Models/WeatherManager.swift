@@ -34,7 +34,9 @@ struct WeatherManager {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { data, _, error in
                 if error != nil {
-                    delegate?.didFailWithError(error: error!)
+                    DispatchQueue.main.async {
+                        delegate?.didFailWithError(error: error!)
+                    }
                     return
                 }
                 if let safeData = data {
@@ -55,7 +57,9 @@ struct WeatherManager {
             let decoderData = try decoder.decode(WeatherData.self, from: weatherData)
             return WeatherModel(data: decoderData)
         } catch {
-            delegate?.didFailWithError(error: error)
+            DispatchQueue.main.async {
+                delegate?.didFailWithError(error: error)
+            }
             return nil
         }
     }

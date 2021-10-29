@@ -56,7 +56,7 @@ class SearchView: UIView {
 
     // MARK: - CustomTextField Configuration
     private func configureTextField() {
-        searchTextField.placeholder = "Type city name..."
+        searchTextField.placeholder = R.string.localizable.searchInfo_placeholder()
         searchTextField.returnKeyType = .search
         searchTextField.keyboardType = .alphabet
         createTextFieldConstraints()
@@ -73,7 +73,7 @@ class SearchView: UIView {
     // MARK: - TextField Configuration
     private func configureTextLabel() {
         let label = UILabel()
-        label.text = "City:"
+        label.text = R.string.localizable.searchInfo_title()
         label.font = R.font.sfProDisplayRegular(size: 17)
         label.textColor = R.color.mainView.textColor()
 

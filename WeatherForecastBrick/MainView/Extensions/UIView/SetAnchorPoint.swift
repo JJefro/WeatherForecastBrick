@@ -10,21 +10,22 @@ import UIKit
 extension UIView {
 
     func setAnchorPoint(_ point: CGPoint) {
-        var newPoint = CGPoint(x: bounds.size.width * point.x, y: bounds.size.height * point.y)
-        var oldPoint = CGPoint(x: bounds.size.width * layer.anchorPoint.x, y: bounds.size.height * layer.anchorPoint.y)
+            var newPoint = CGPoint(x: bounds.size.width * point.x, y: bounds.size.height * point.y)
+            var oldPoint = CGPoint(x: bounds.size.width * layer.anchorPoint.x, y: bounds.size.height * layer.anchorPoint.y)
 
-        var position = layer.position
-        
-        newPoint = newPoint.applying(transform)
-        oldPoint = oldPoint.applying(transform)
+            newPoint = newPoint.applying(transform)
+            oldPoint = oldPoint.applying(transform)
 
-        position.x -= oldPoint.x
-        position.x += newPoint.x
+            var position = layer.position
 
-        position.y -= oldPoint.y
-        position.y += newPoint.y
+            position.x -= oldPoint.x
+            position.x += newPoint.x
 
-        layer.position = position
-        layer.anchorPoint = point
-    }
+            position.y -= oldPoint.y
+            position.y += newPoint.y
+
+        print(position)
+            layer.position = position
+            layer.anchorPoint = point
+        }
 }
