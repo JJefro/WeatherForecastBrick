@@ -39,7 +39,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation()
             let latitude = location.coordinate.latitude
             let longitude = location.coordinate.longitude
-            delegate?.getLocation(latitude: latitude, longitude: longitude)
+            DispatchQueue.main.async { [self] in
+                delegate?.getLocation(latitude: latitude, longitude: longitude)
+            }
         }
     }
 
