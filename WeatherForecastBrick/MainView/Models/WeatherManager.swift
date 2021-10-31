@@ -20,7 +20,12 @@ struct WeatherManager {
     private let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=\(Secrets.apiKey)&units=metric"
 
     func fetchWeatherByCityName(cityName: String) {
-        let urlString = "\(weatherURL)&q=\(cityName)"
+        let text = NSMutableString(string: cityName) as CFMutableString
+        CFStringTransform(text, nil, kCFStringTransformStripCombiningMarks, false)
+        var city = (text as NSMutableString).copy() as! NSString
+        city = city.replacingOccurrences(of: " ", with: "%20") as NSString
+
+        let urlString = "\(weatherURL)&q=\(city)"
         performRequest(with: urlString)
     }
     

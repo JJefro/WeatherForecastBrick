@@ -3,16 +3,49 @@
     {
       "filename" : "wet 1.png",
       "idiom" : "universal",
+      "resizing" : {
+        "cap-insets" : {
+          "bottom" : 225,
+          "top" : 105
+        },
+        "center" : {
+          "height" : 11,
+          "mode" : "tile"
+        },
+        "mode" : "3-part-vertical"
+      },
       "scale" : "1x"
     },
     {
       "filename" : "wet 1@2x.png",
       "idiom" : "universal",
+      "resizing" : {
+        "cap-insets" : {
+          "bottom" : 452,
+          "top" : 207
+        },
+        "center" : {
+          "height" : 23,
+          "mode" : "tile"
+        },
+        "mode" : "3-part-vertical"
+      },
       "scale" : "2x"
     },
     {
       "filename" : "wet 1@3x.png",
       "idiom" : "universal",
+      "resizing" : {
+        "cap-insets" : {
+          "bottom" : 678,
+          "top" : 312
+        },
+        "center" : {
+          "height" : 33,
+          "mode" : "tile"
+        },
+        "mode" : "3-part-vertical"
+      },
       "scale" : "3x"
     }
   ],

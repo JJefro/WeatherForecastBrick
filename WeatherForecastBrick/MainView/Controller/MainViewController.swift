@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var areaLabel: UILabel!
     @IBOutlet weak var searchButton: CardButton!
     @IBOutlet weak var currentLocationButton: CardButton!
-
+    
     var infoView = InfoView()
 
     var loadingView = LoadingView()
@@ -32,6 +32,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        brickImage.translatesAutoresizingMaskIntoConstraints = false
         infoView.button.addTarget(self, action: #selector(infoViewButtonTapped(_:)), for: .touchUpInside)
         addTapGesture(view: info)
         addPanGesture(view: brickImage)
@@ -60,16 +61,16 @@ class MainViewController: UIViewController {
     }
 
     @objc func handlePanGesture(_ sender: UIPanGestureRecognizer) {
-        UIView.animate(withDuration: 0.5) { [self] in
-            brickImage.transform = CGAffineTransform(translationX: 0, y: -10)
-            if sender.state == .ended {
+        let translation = sender.translation(in: self.view)
+        let height = brickImage.frame.size.height - translation.y
+        UIView.animate(withDuration: 1) { [self] in
+            brickImage.frame.size.height = height
+            if sender.state == .ended, translation.y > 60 {
                 loadingView.isHidden = false
-                brickImage.transform = CGAffineTransform(translationX: 0, y: 0)
                 weatherManager.fetchWeatherByCityName(cityName: currentCity)
             }
-        } completion: { _ in
-            self.brickImage.transform = .identity
         }
+        brickImage.transform = .identity
     }
 
     @objc func handleSingleTap(_ sender: UITapGestureRecognizer) {
@@ -79,6 +80,8 @@ class MainViewController: UIViewController {
 
     @objc func infoViewButtonTapped(_ sender: UIButton) {
         infoView.isHidden = true
+        weatherManager.fetchWeatherByCityName(cityName: currentCity)
+        loadingView.isHidden = false
         animateInfoView()
     }
 }

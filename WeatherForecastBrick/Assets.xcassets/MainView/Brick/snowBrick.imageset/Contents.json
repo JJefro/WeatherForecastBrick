@@ -1,18 +1,51 @@
 {
   "images" : [
     {
-      "filename" : "snow 1.png",
+      "filename" : "snow 1-2.png",
       "idiom" : "universal",
+      "resizing" : {
+        "cap-insets" : {
+          "bottom" : 224,
+          "top" : 104
+        },
+        "center" : {
+          "height" : 13,
+          "mode" : "tile"
+        },
+        "mode" : "3-part-vertical"
+      },
       "scale" : "1x"
     },
     {
-      "filename" : "snow 1@2x.png",
+      "filename" : "snow 1-2@2x.png",
       "idiom" : "universal",
+      "resizing" : {
+        "cap-insets" : {
+          "bottom" : 449,
+          "top" : 208
+        },
+        "center" : {
+          "height" : 25,
+          "mode" : "tile"
+        },
+        "mode" : "3-part-vertical"
+      },
       "scale" : "2x"
     },
     {
-      "filename" : "snow 1@3x.png",
+      "filename" : "snow 1-2@3x.png",
       "idiom" : "universal",
+      "resizing" : {
+        "cap-insets" : {
+          "bottom" : 678,
+          "top" : 310
+        },
+        "center" : {
+          "height" : 35,
+          "mode" : "tile"
+        },
+        "mode" : "3-part-vertical"
+      },
       "scale" : "3x"
     }
   ],
