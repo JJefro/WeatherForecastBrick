@@ -102,7 +102,7 @@ extension MainViewController: WeatherManagerDelegate {
             animateBrick(with: 8)
         case 11...14:
             animateBrick(with: 10)
-        case 7...10:
+        case 3...10:
             animateBrick(with: 12)
         default: brickImage.layer.removeAllAnimations()
         }
@@ -113,7 +113,6 @@ extension MainViewController: WeatherManagerDelegate {
         let frameDuration = Double(1 / numberOfFrames)
 
         brickImage.setAnchorPoint(CGPoint(x: 0.5, y: -0.5))
-        brickImage.layer.position = CGPoint(x: 195, y: -227.5)
         UIView.animateKeyframes(withDuration: 1.5, delay: 0, options: [.autoreverse, .repeat, .allowUserInteraction]) {
 
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: frameDuration) {
