@@ -31,11 +31,11 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainView/background" translatesAutoresizingMaskIntoConstraints="NO" id="6Sv-us-wgo">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainView/Brick/normalBrick" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dVz-60-Ax4">
-                                <rect key="frame" x="95" y="0.0" width="224" height="455"/>
+                            <imageView autoresizesSubviews="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainView/Brick/normalBrick" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dVz-60-Ax4">
+                                <rect key="frame" x="112" y="0.0" width="190" height="455"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="224" id="7IP-hf-gnr"/>
-                                    <constraint firstAttribute="height" priority="750" constant="455" id="PFp-U8-jVG"/>
+                                    <constraint firstAttribute="width" constant="190" id="7IP-hf-gnr"/>
+                                    <constraint firstAttribute="height" priority="750" constant="455" identifier="brickHeight" id="PFp-U8-jVG"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="TxA-fs-4eH" userLabel="TemperatureLabel">

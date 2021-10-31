@@ -24,7 +24,6 @@ extension UIView {
             position.y -= oldPoint.y
             position.y += newPoint.y
 
-        print(position)
             layer.position = position
             layer.anchorPoint = point
         }
