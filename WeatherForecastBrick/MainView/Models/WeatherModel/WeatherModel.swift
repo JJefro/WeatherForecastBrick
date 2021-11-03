@@ -15,7 +15,7 @@ struct WeatherModel {
     let temperature: Double
     let countryCode: String
     let windSpeed: Double
-    let temperatureFeelsLike: Double
+    let tempFeelsLike: Double
     
     var tempString: String {
         let temp = String(format: "%.0f", temperature)
@@ -41,6 +41,6 @@ extension WeatherModel {
         temperature = data.main.temp
         countryCode = data.sys.country
         windSpeed   = data.wind.speed
-        temperatureFeelsLike = data.main.feels_like
+        tempFeelsLike = data.main.feels_like
     }
 }

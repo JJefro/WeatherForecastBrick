@@ -20,7 +20,7 @@ struct Secrets {
                 fatalError("Couldn't find key 'Weather API key' in 'Secrets.plist'.")
             }
             if value == "YOUR_API_KEY" {
-                fatalError("Register for a developer account and get an API key")
+                fatalError("Write your API key into Secrets.plist file.")
             }
             return value
         }

@@ -17,7 +17,7 @@
 "infoView_buttonTitle"      = "Скрыть";
 
 "weatherCondition_thunderstorm" = "гроза";
-"weatherCondition_drizzle"      = "моросящий дождь";
+"weatherCondition_drizzle"      = "морось";
 "weatherCondition_raining"      = "дождь";
 "weatherCondition_snow"         = "снег";
 "weatherCondition_fog"          = "туман";

@@ -10,7 +10,8 @@ import CoreLocation
 
 class MainViewController: UIViewController {
 
-    @IBOutlet weak var brickImage: UIImageView!
+    @IBOutlet weak var brickImageView: UIImageView!
+    @IBOutlet weak var brickHeight: NSLayoutConstraint!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var info: UIImageView!
     @IBOutlet weak var infoTitle: UILabel!
@@ -20,27 +21,28 @@ class MainViewController: UIViewController {
     @IBOutlet weak var currentLocationButton: CardButton!
     
     var infoView = InfoView()
-
     var loadingView = LoadingView()
     var searchView = SearchView()
+
+    var brickModel = BrickModel()
 
     var weatherManager = WeatherManager()
     var locationManager = LocationManager()
 
     var currentCity = String()
+    private var initialBrickHeight = CGFloat()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        brickImage.translatesAutoresizingMaskIntoConstraints = false
         infoView.button.addTarget(self, action: #selector(infoViewButtonTapped(_:)), for: .touchUpInside)
         addTapGesture(view: info)
-        addPanGesture(view: brickImage)
+        addPanGesture(view: brickImageView)
+        initialBrickHeight = brickHeight.constant
     }
 
     @IBAction func getCurrentLocation(_ sender: UIButton) {
-        loadingView.isHidden = false
-        brickImage.isHidden = true
+        brickModel.brickState = .brickCalmedDown
         locationManager.requestLocation()
     }
 
@@ -51,7 +53,6 @@ class MainViewController: UIViewController {
 
     private func addTapGesture(view: UIView) {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleSingleTap(_:)))
-        tap.numberOfTapsRequired = 1
         view.addGestureRecognizer(tap)
     }
 
@@ -61,16 +62,25 @@ class MainViewController: UIViewController {
     }
 
     @objc func handlePanGesture(_ sender: UIPanGestureRecognizer) {
-        let translation = sender.translation(in: self.view)
-        let height = brickImage.frame.size.height - translation.y
-        UIView.animate(withDuration: 1) { [self] in
-            brickImage.frame.size.height = height
-            if sender.state == .ended, translation.y > 60 {
-                loadingView.isHidden = false
+        switch sender.state {
+        case .changed:
+            let translation = sender.translation(in: view).y
+            if initialBrickHeight < brickHeight.constant + translation {
+                brickHeight.constant += translation
+                brickModel.panDelta += translation
+                sender.setTranslation(.zero, in: view)
+            }
+        case .cancelled, .ended, .failed:
+            if brickModel.panDelta > 60, brickModel.brickState != .brickWentUp {
                 weatherManager.fetchWeatherByCityName(cityName: currentCity)
             }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
+                brickModel.setBrickAnimation(brickImageView)
+            }
+            brickHeight.constant -= brickModel.panDelta
+            brickModel.panDelta = 0
+        default: break
         }
-        brickImage.transform = .identity
     }
 
     @objc func handleSingleTap(_ sender: UITapGestureRecognizer) {
@@ -81,25 +91,30 @@ class MainViewController: UIViewController {
     @objc func infoViewButtonTapped(_ sender: UIButton) {
         infoView.isHidden = true
         weatherManager.fetchWeatherByCityName(cityName: currentCity)
-        loadingView.isHidden = false
         animateInfoView()
     }
 }
 
-// MARK: - LocationManager Delegate
-extension MainViewController: LocationManagerDelegate {
+// MARK: - BrickModel Delegate
+extension MainViewController: BrickModelDelegate {
+    func getBrickState(_ state: BrickState) {
+        switch state {
+        case .brickWentUp:
+            brickImageView.transform = .identity
+            brickImageView.layer.removeAllAnimations()
+            brickImageView.setAnchorPoint(CGPoint(x: 0.5, y: 0.5))
 
-    func getLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-        weatherManager.fetchWeatherByLocation(latitude: latitude, longitude: longitude)
-    }
-}
+            currentLocationButton.isEnabled = false
 
-// MARK: - SearchView Delegate
-extension MainViewController: SearchViewDelegate {
+        case .brickAnimatable:
+            brickImageView.setAnchorPoint(CGPoint(x: 0.5, y: 0))
+            
+        case .brickCalmedDown:я
+            brickImageView.transform = .identity
+            brickImageView.layer.removeAllAnimations()
+            brickImageView.setAnchorPoint(CGPoint(x: 0.5, y: 0.5))
 
-    func getSearchViewText(text: String) {
-        weatherManager.fetchWeatherByCityName(cityName: text)
-        searchView.isHidden = true
-        animateSearchView()
+            currentLocationButton.isEnabled = true
+        }
     }
 }
