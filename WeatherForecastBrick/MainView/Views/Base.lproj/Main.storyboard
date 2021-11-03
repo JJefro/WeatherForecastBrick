@@ -115,8 +115,8 @@
                             <constraint firstItem="32K-XQ-WOi" firstAttribute="top" relation="greaterThanOrEqual" secondItem="TxA-fs-4eH" secondAttribute="bottom" constant="10" id="Fw5-lJ-Bro"/>
                             <constraint firstItem="QKF-ef-83i" firstAttribute="top" secondItem="32K-XQ-WOi" secondAttribute="bottom" constant="27" id="GCv-Xa-Kfm"/>
                             <constraint firstItem="czv-Eh-WW2" firstAttribute="top" secondItem="QKF-ef-83i" secondAttribute="top" constant="16" id="ISa-MV-Zb2"/>
+                            <constraint firstItem="TxA-fs-4eH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" priority="250" constant="461" id="K9O-AR-1I9"/>
                             <constraint firstItem="dVz-60-Ax4" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LgS-Fs-Yq3"/>
-                            <constraint firstItem="TxA-fs-4eH" firstAttribute="top" secondItem="dVz-60-Ax4" secondAttribute="bottom" constant="6" id="Vzo-vZ-H87"/>
                             <constraint firstItem="32K-XQ-WOi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wfo-gh-1pk"/>
                             <constraint firstItem="czv-Eh-WW2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Y81-mo-C42"/>
                             <constraint firstItem="QKF-ef-83i" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aOS-P5-pp8"/>
@@ -128,7 +128,8 @@
                     </view>
                     <connections>
                         <outlet property="areaLabel" destination="cIJ-G5-Fsc" id="GMc-Qg-TBU"/>
-                        <outlet property="brickImage" destination="dVz-60-Ax4" id="4D5-GF-ago"/>
+                        <outlet property="brickHeight" destination="PFp-U8-jVG" id="711-vb-VdZ"/>
+                        <outlet property="brickImageView" destination="dVz-60-Ax4" id="4D5-GF-ago"/>
                         <outlet property="currentLocationButton" destination="tcb-sg-wTf" id="SxK-Lo-ViS"/>
                         <outlet property="info" destination="QKF-ef-83i" id="2KJ-U2-d5P"/>
                         <outlet property="infoTitle" destination="czv-Eh-WW2" id="izS-Vf-v25"/>

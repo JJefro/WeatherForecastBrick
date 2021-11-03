@@ -5,20 +5,19 @@
 //  Created by Jevgenijs Jefrosinins on 22/10/2021.
 //
 
-import Foundation
 import SnapKit
 import CoreLocation
 import UIKit
 
 extension MainViewController {
 
-    // MARK: - MainViewController Configuration
+    // MARK: - MainViewController Configurations
     func configure() {
         bind()
         makeLoadingViewConstraints()
         makeSearchViewConstraints()
-        makeOpenedInfoViewConstraints()
-        brickImage.layer.zPosition = 1
+        makeInfoViewConstraints()
+        brickImageView.layer.zPosition = 1
         infoTitle.text = R.string.localizable.infoView_title()
     }
 
@@ -26,10 +25,11 @@ extension MainViewController {
         weatherManager.delegate = self
         searchView.delegate = self
         locationManager.delegate = self
+        brickModel.delegate = self
     }
 
-    // MARK: - Opened Info View Constraints
-    private func makeOpenedInfoViewConstraints() {
+    // MARK: - Info View Constraints
+    private func makeInfoViewConstraints() {
         view.addSubview(infoView)
         infoView.snp.makeConstraints { make in
             make.center.equalToSuperview()
