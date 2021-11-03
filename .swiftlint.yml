@@ -11,6 +11,7 @@ excluded:
 - WeatherForecastBrick/SceneDelegate.swift
 - WeatherForecastBrick/MainView/Models/WeatherData.swift
 - WeatherForecastBrick/Secrets.swift
+- WeatherForecastBrick/R.generated.swift
 - R.generated.swift
 line_length:
     warning: 170

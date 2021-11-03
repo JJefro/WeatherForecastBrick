@@ -9,7 +9,8 @@ import UIKit
 import CoreLocation
 
 protocol LocationManagerDelegate: AnyObject {
-    func getLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees)
+    func didUpdateLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees)
+    func locationUpdateDidFailWithError(error: Error)
 }
 
 class LocationManager: NSObject, CLLocationManagerDelegate {
@@ -40,16 +41,14 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             let latitude = location.coordinate.latitude
             let longitude = location.coordinate.longitude
             DispatchQueue.main.async { [self] in
-                delegate?.getLocation(latitude: latitude, longitude: longitude)
+                delegate?.didUpdateLocation(latitude: latitude, longitude: longitude)
             }
         }
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Location Manager", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
-            alert.showAlert()
+        DispatchQueue.main.async { [self] in
+        delegate?.locationUpdateDidFailWithError(error: error)
         }
     }
 }

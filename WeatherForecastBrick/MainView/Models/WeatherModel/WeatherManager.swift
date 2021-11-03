@@ -10,6 +10,7 @@ import CoreLocation
 
 protocol WeatherManagerDelegate: AnyObject {
     func updateWeather(_ weatherManager: WeatherManager, weather: WeatherModel)
+    func willFetchWeather()
     func didFailWithError(error: Error)
 }
 
@@ -26,11 +27,13 @@ struct WeatherManager {
         city = city.replacingOccurrences(of: " ", with: "%20") as NSString
 
         let urlString = "\(weatherURL)&q=\(city)"
+        delegate?.willFetchWeather() // On main thread
         performRequest(with: urlString)
     }
     
     func fetchWeatherByLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         let urlString = "\(weatherURL)&lat=\(latitude)&lon=\(longitude)"
+        delegate?.willFetchWeather() // On main thread
         performRequest(with: urlString)
     }
     
