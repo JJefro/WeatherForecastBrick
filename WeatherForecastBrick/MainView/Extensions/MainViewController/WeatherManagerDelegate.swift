@@ -12,7 +12,7 @@ extension MainViewController: WeatherManagerDelegate {
     
     func willFetchWeather() {
         loadingView.isHidden = false
-        brickImageView.isHidden = true
+//        brickImageView.isHidden = true
     }
 
     func updateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
@@ -23,11 +23,12 @@ extension MainViewController: WeatherManagerDelegate {
         currentCity = weather.cityName
 
         UIView.transition(with: brickImageView, duration: 1, options: [.transitionCrossDissolve]) { [self] in
-            brickImageView.image = brickModel.changeBrickCondition(brickImageView, weather: weather)
+            brickImageView.image = brickModel.changeBrickCondition(weather: weather)
         } completion: { [self] _ in
-            brickModel.setBrickAnimation(brickImageView)
+            brickModel.setBrickAnimation()
             searchButton.isEnabled = true
             loadingView.isHidden = true
+            currentLocationButton.isEnabled = true
             brickImageView.isHidden = false
         }
     }

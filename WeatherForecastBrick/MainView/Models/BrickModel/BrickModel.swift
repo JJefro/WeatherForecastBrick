@@ -8,32 +8,42 @@
 import Foundation
 import UIKit
 
-protocol BrickModelDelegate: AnyObject {
-    func getBrickState(_ state: BrickState)
-}
-
 class BrickModel {
-
-    weak var delegate: BrickModelDelegate?
-
+    
     private var windForce = Double()
+    var initialBrickHeight = CGFloat()
+    var brickPosition = CGPoint()
+    var brickView = UIImageView()
 
     var panDelta: CGFloat = 0 {
         didSet {
-            if panDelta > 0, brickState != .brickWentUp {
-                brickState = .brickCalmedDown
+            if panDelta > 0, state != .brickWentUp {
+                state = .brickCalmedDown
             }
         }
     }
-
-    var brickState: BrickState = .brickCalmedDown {
+    
+    var state: BrickState = .brickCalmedDown {
         didSet {
-            delegate?.getBrickState(brickState)
+            updateBrick()
         }
     }
-
-    func changeBrickCondition(_ brickView: UIImageView, weather: WeatherModel) -> UIImage? {
+    
+    func updateBrick() {
+        switch state {
+        case .brickWentUp, .brickCalmedDown:
+            brickView.transform = .identity
+            brickView.layer.removeAllAnimations()
+            brickView.setAnchorPoint(CGPoint(x: 0.5, y: 0.5))
+        case .brickAnimatable:
+            brickView.setAnchorPoint(CGPoint(x: 0.5, y: 0))
+        }
+    }
+    
+    func changeBrickCondition(weather: WeatherModel) -> UIImage? {
         windForce = weather.windSpeed
+        brickView.layer.zPosition = weather.condition != .fog ? 1 : -1
+        brickView.alpha = 1
         if weather.condition == .sunny, weather.tempFeelsLike > 29 {
             return R.image.mainView.brick.cracksBrick()
         } else {
@@ -46,14 +56,13 @@ class BrickModel {
             case .sunny:        return R.image.mainView.brick.normalBrick()
             case .snow:         return R.image.mainView.brick.snowBrick()
             case .fog:
-                brickView.layer.zPosition = -1
                 brickView.alpha = getBrickOpacity(weather.visibility)
             default: break
             }
         }
         return R.image.mainView.brick.normalBrick()
     }
-
+    
     private func getBrickOpacity(_ visibility: Int) -> CGFloat {
         switch visibility {
         // Weather visibility | Brick opacity
@@ -68,30 +77,32 @@ class BrickModel {
         default:               return 0.05
         }
     }
-
-    func setBrickAnimation(_ brickView: UIImageView) {
-        switch windForce {
-        case 30...:
-            animateBrick(brickView, with: 6)
-        case 21...29:
-            animateBrick(brickView, with: 8)
-        case 15...20:
-            animateBrick(brickView, with: 11)
-        case 11...14:
-            animateBrick(brickView, with: 14)
-        case 3...10:
-            animateBrick(brickView, with: 18)
-        default: break
+    
+    func setBrickAnimation() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) { [self] in
+            switch windForce {
+            case 30...:
+                animateBrick(with: 6)
+            case 21...29:
+                animateBrick(with: 8)
+            case 15...20:
+                animateBrick(with: 11)
+            case 11...14:
+                animateBrick(with: 14)
+            case 3...10:
+                animateBrick(with: 18)
+            default: state = .brickCalmedDown
+            }
         }
     }
-
-    private func animateBrick(_ brickView: UIImageView, with number: CGFloat) {
+    
+    private func animateBrick(with number: CGFloat) {
         let numberOfFrames: Double = 2
         let frameDuration = Double(1 / numberOfFrames)
-
-        brickState = .brickAnimatable
-
-        UIView.animateKeyframes(withDuration: 1.5, delay: 0, options: [.autoreverse, .repeat, .allowUserInteraction]) {
+        
+        state = .brickAnimatable
+        
+        UIView.animateKeyframes(withDuration: 1.5, delay: 0, options: [.autoreverse, .repeat, .allowUserInteraction]) { [self] in
             
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: frameDuration) {
                 brickView.transform = CGAffineTransform(rotationAngle: .pi / number)

@@ -25,7 +25,6 @@ extension MainViewController {
         weatherManager.delegate = self
         searchView.delegate = self
         locationManager.delegate = self
-        brickModel.delegate = self
     }
 
     // MARK: - Info View Constraints
@@ -43,7 +42,7 @@ extension MainViewController {
         view.addSubview(searchView)
         searchView.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(20)
-            make.height.equalTo(100)
+            make.height.equalTo(150)
             make.top.equalTo(info.snp.bottom)
         }
     }
