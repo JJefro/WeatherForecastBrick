@@ -9,27 +9,30 @@ import Foundation
 import UIKit
 
 extension MainViewController {
-
+    
     func animateSearchView() {
-        brickModel.brickState = .brickWentUp
         UIView.animate(withDuration: 1, delay: 0, options: []) { [self] in
             if searchView.isHidden == false {
+                brickModel.state = .brickWentUp
                 brickImageView.transform = CGAffineTransform(translationX: 0, y: -300)
                 temperatureLabel.transform = CGAffineTransform(translationX: -300, y: 0)
                 weatherCondition.transform = CGAffineTransform(translationX: -300, y: 0)
                 info.transform = CGAffineTransform(translationX: 0, y: 300)
                 infoTitle.transform = CGAffineTransform(translationX: 0, y: 300)
-                searchView.transform = CGAffineTransform(translationX: 0, y: -view.frame.size.height / 2)
+                searchView.transform = CGAffineTransform(translationX: 0, y: (-view.frame.size.height / 2) - 50)
             } else {
                 returnElementsBack()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    brickModel.state = .brickCalmedDown
+                }
             }
         }
     }
-
+    
     func animateInfoView() {
-        brickModel.brickState = .brickWentUp
-        UIView.animate(withDuration: 1, delay: 0, options: [.allowUserInteraction]) { [self] in
+        UIView.animate(withDuration: 1, delay: 0, options: []) { [self] in
             if infoView.isHidden == false {
+                brickModel.state = .brickWentUp
                 brickImageView.transform = CGAffineTransform(translationX: 0, y: -300)
                 temperatureLabel.transform = CGAffineTransform(translationX: -300, y: 0)
                 weatherCondition.transform = CGAffineTransform(translationX: -300, y: 0)
@@ -40,10 +43,13 @@ extension MainViewController {
                 currentLocationButton.transform = CGAffineTransform(translationX: 0, y: 300)
             } else {
                 returnElementsBack()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    brickModel.state = .brickCalmedDown
+                }
             }
         }
     }
-
+    
     private func returnElementsBack() {
         brickImageView.transform = .identity
         temperatureLabel.transform = .identity
@@ -53,6 +59,5 @@ extension MainViewController {
         areaLabel.transform = .identity
         searchButton.transform = .identity
         currentLocationButton.transform = .identity
-        brickModel.brickState = .brickCalmedDown
     }
 }
