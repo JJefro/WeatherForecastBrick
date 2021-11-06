@@ -28,3 +28,5 @@
 
 "searchInfo_title"       = "Город:";
 "searchInfo_placeholder" = "Введите название города...";
+
+"searchView_hideButton" = "Скрыть";

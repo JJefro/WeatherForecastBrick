@@ -13,6 +13,8 @@ class SearchView: UIView {
     weak var delegate: SearchViewDelegate?
 
     var searchTextField = CustomTextField()
+    var buttonView = UIView()
+    let cornerRadius: CGFloat = 25
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,8 +26,21 @@ class SearchView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    let hideButton: CardButton = {
+        var button = CardButton()
+        button.setTitle(R.string.localizable.searchView_hideButton(), for: .normal)
+        button.backgroundColor = .gray
+        button.titleLabel?.font = R.font.sfProDisplaySemibold(size: 15)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.white.cgColor
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 10
+        return button
+    }()
+
     private func configureSearchView() {
         configureBlurView()
+        configureButtonView()
         configureTextField()
         configureTextLabel()
         bind()
@@ -44,13 +59,14 @@ class SearchView: UIView {
             blur = UITraitCollection.current.userInterfaceStyle == .dark ? darkBlur : lightBlur
             let blurView = UIVisualEffectView(effect: blur)
             blurView.clipsToBounds = true
-            blurView.layer.cornerRadius = 25
+            blurView.layer.cornerRadius = cornerRadius
             return blurView
         }()
 
         self.addSubview(blurView)
         blurView.snp.makeConstraints { make in
-            make.edges.equalTo(self)
+            make.right.left.top.equalTo(self)
+            make.bottom.equalTo(self).offset(-50)
         }
     }
 
@@ -65,7 +81,7 @@ class SearchView: UIView {
     private func createTextFieldConstraints() {
         self.addSubview(searchTextField)
         searchTextField.snp.makeConstraints { make in
-            make.bottom.equalTo(self.snp.bottom).inset(20)
+            make.top.equalTo(self).inset(45)
             make.left.right.equalTo(self).inset(20)
         }
     }
@@ -82,5 +98,30 @@ class SearchView: UIView {
             make.left.equalTo(searchTextField)
             make.bottom.equalTo(searchTextField.snp.top).offset(-6)
         }
+    }
+
+    // MARK: ButtonView and SearchButton Configurations
+    private func configureButtonView() {
+        buttonView.backgroundColor = .darkGray
+        buttonView.layer.cornerRadius = cornerRadius
+        makeButtonViewConstraints()
+    }
+
+    private func makeButtonViewConstraints() {
+        self.addSubview(hideButton)
+        hideButton.snp.makeConstraints { make in
+            make.centerX.equalTo(self.snp.centerX)
+            make.height.equalTo(20)
+            make.width.equalTo(100)
+            make.bottom.equalTo(self.snp.bottom).inset(25)
+        }
+        self.addSubview(buttonView)
+        buttonView.snp.makeConstraints { make in
+            make.right.left.equalTo(self)
+            make.height.equalTo(100)
+            make.centerX.equalTo(self)
+            make.bottom.equalTo(self.snp.bottom).inset(20)
+        }
+        self.sendSubviewToBack(buttonView)
     }
 }
