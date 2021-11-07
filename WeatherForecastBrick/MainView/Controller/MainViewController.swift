@@ -13,9 +13,9 @@ class MainViewController: UIViewController {
     @IBOutlet weak var brickImageView: BrickView!
     @IBOutlet weak var brickHeight: NSLayoutConstraint!
     @IBOutlet weak var temperatureLabel: UILabel!
-    @IBOutlet weak var info: UIImageView!
+    @IBOutlet weak var infoImageView: UIImageView!
     @IBOutlet weak var infoTitle: UILabel!
-    @IBOutlet weak var weatherCondition: UILabel!
+    @IBOutlet weak var weatherConditionLabel: UILabel!
     @IBOutlet weak var areaLabel: UILabel!
     @IBOutlet weak var searchButton: CardButton!
     @IBOutlet weak var currentLocationButton: CardButton!
@@ -34,16 +34,18 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        infoView.button.addTarget(self, action: #selector(infoViewButtonTapped(_:)), for: .touchUpInside)
+
+        infoView.infoHideButton.addTarget(self, action: #selector(infoViewHideButtonTapped(_:)), for: .touchUpInside)
         searchView.hideButton.addTarget(self, action: #selector(searchViewHideButtonTapped(_:)), for: .touchUpInside)
-        addTapGesture(view: info)
+
+        addTapGesture(view: infoImageView)
         addPanGesture(view: brickImageView)
+
         brickModel.brickView = brickImageView
         brickModel.initialBrickHeight = brickHeight.constant
     }
 
     @IBAction func getCurrentLocation(_ sender: UIButton) {
-        brickModel.state = .brickCalmedDown
         locationManager.requestLocation()
     }
     
@@ -89,7 +91,7 @@ class MainViewController: UIViewController {
         animateInfoView()
     }
     
-    @objc func infoViewButtonTapped(_ sender: UIButton) {
+    @objc func infoViewHideButtonTapped(_ sender: UIButton) {
         infoView.isHidden = true
         weatherManager.fetchWeatherByCityName(cityName: currentCity)
         animateInfoView()

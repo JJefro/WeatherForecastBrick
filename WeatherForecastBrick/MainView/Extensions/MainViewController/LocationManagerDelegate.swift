@@ -18,6 +18,7 @@ extension MainViewController: LocationManagerDelegate {
         loadingView.isHidden = true
         brickImageView.isHidden = true
         searchButton.isEnabled = false
+        currentLocationButton.isEnabled = true
         
         let alert = UIAlertController(title: "Location Manager", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))

@@ -13,16 +13,17 @@ class SearchView: UIView {
     weak var delegate: SearchViewDelegate?
 
     var searchTextField = CustomTextField()
-    var buttonView = UIView()
-    let cornerRadius: CGFloat = 25
+    private var buttonView = UIView()
+    private let cornerRadius: CGFloat = 25
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         isHidden = true
         configureSearchView()
+        searchTextField.accessibilityIdentifier = MainViewAccessibilityID.searchViewTextField
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -35,6 +36,7 @@ class SearchView: UIView {
         button.layer.borderColor = UIColor.white.cgColor
         button.clipsToBounds = true
         button.layer.cornerRadius = 10
+        button.accessibilityIdentifier = MainViewAccessibilityID.searchViewHideButton
         return button
     }()
 
@@ -72,7 +74,7 @@ class SearchView: UIView {
 
     // MARK: - CustomTextField Configuration
     private func configureTextField() {
-        searchTextField.placeholder = R.string.localizable.searchInfo_placeholder()
+        searchTextField.placeholder = R.string.localizable.searchView_TextFieldPlaceholder()
         searchTextField.returnKeyType = .search
         searchTextField.keyboardType = .alphabet
         createTextFieldConstraints()
@@ -89,9 +91,10 @@ class SearchView: UIView {
     // MARK: - TextField Configuration
     private func configureTextLabel() {
         let label = UILabel()
-        label.text = R.string.localizable.searchInfo_title()
+        label.text = R.string.localizable.searchView_title()
         label.font = R.font.sfProDisplayRegular(size: 17)
         label.textColor = R.color.mainView.textColor()
+        label.accessibilityIdentifier = MainViewAccessibilityID.searchViewTitle
 
         self.addSubview(label)
         label.snp.makeConstraints { make in

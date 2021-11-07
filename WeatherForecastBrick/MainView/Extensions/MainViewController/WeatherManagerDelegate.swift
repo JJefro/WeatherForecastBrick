@@ -12,24 +12,25 @@ extension MainViewController: WeatherManagerDelegate {
     
     func willFetchWeather() {
         loadingView.isHidden = false
-//        brickImageView.isHidden = true
     }
 
     func updateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
         guard let area = weather.country else {return}
         temperatureLabel.text = weather.tempString
-        weatherCondition.text = weather.condition.condition
+        weatherConditionLabel.text = weather.condition.condition
         areaLabel.text = "\(weather.cityName), \(area)"
         currentCity = weather.cityName
 
         UIView.transition(with: brickImageView, duration: 1, options: [.transitionCrossDissolve]) { [self] in
             brickImageView.image = brickModel.changeBrickCondition(weather: weather)
         } completion: { [self] _ in
-            brickModel.setBrickAnimation()
             searchButton.isEnabled = true
             loadingView.isHidden = true
             currentLocationButton.isEnabled = true
             brickImageView.isHidden = false
+            UIView.transition(with: brickImageView, duration: 0.5, options: [.transitionCrossDissolve]) { [self] in
+                brickModel.setBrickAnimation()
+            }
         }
     }
 
@@ -37,6 +38,7 @@ extension MainViewController: WeatherManagerDelegate {
         // If we have a problem with internet connection, brick disappears and we present alert with error.
         loadingView.isHidden = true
         brickImageView.isHidden = true
+        currentLocationButton.isEnabled = true
         searchButton.isEnabled = false
         let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
