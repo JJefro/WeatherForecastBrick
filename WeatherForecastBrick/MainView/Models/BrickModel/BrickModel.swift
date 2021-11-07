@@ -12,8 +12,7 @@ class BrickModel {
     
     private var windForce = Double()
     var initialBrickHeight = CGFloat()
-    var brickPosition = CGPoint()
-    var brickView = UIImageView()
+    var brickView = BrickView()
 
     var panDelta: CGFloat = 0 {
         didSet {
@@ -29,13 +28,15 @@ class BrickModel {
         }
     }
     
-    func updateBrick() {
+    private func updateBrick() {
         switch state {
         case .brickWentUp, .brickCalmedDown:
+            brickView.isSwinging = false
             brickView.transform = .identity
             brickView.layer.removeAllAnimations()
             brickView.setAnchorPoint(CGPoint(x: 0.5, y: 0.5))
         case .brickAnimatable:
+            brickView.isSwinging = true
             brickView.setAnchorPoint(CGPoint(x: 0.5, y: 0))
         }
     }
@@ -82,15 +83,15 @@ class BrickModel {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) { [self] in
             switch windForce {
             case 30...:
-                animateBrick(with: 6)
+                animateBrick(with: 4)
             case 21...29:
-                animateBrick(with: 8)
+                animateBrick(with: 6)
             case 15...20:
-                animateBrick(with: 11)
+                animateBrick(with: 9)
             case 11...14:
-                animateBrick(with: 14)
-            case 3...10:
-                animateBrick(with: 18)
+                animateBrick(with: 13)
+            case 7...10:
+                animateBrick(with: 15)
             default: state = .brickCalmedDown
             }
         }

@@ -26,7 +26,7 @@
 "weatherCondition_clouds"       = "облачно";
 "weatherCondition_unknown"      = "?";
 
-"searchInfo_title"       = "Город:";
-"searchInfo_placeholder" = "Введите название города...";
+"searchView_title"                = "Город:";
+"searchView_TextFieldPlaceholder" = "Введите название города...";
 
 "searchView_hideButton" = "Скрыть";

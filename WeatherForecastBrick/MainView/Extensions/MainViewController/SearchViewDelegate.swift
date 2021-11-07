@@ -10,11 +10,7 @@ import Foundation
 extension MainViewController: SearchViewDelegate {
 
     func getSearchViewText(text: String) {
-        if !text.isEmpty {
-            weatherManager.fetchWeatherByCityName(cityName: text)
-        } else {
-            weatherManager.fetchWeatherByCityName(cityName: currentCity)
-        }
+        weatherManager.fetchWeatherByCityName(cityName: !text.isEmpty ? text : currentCity)
         searchView.isHidden = true
         animateSearchView()
     }

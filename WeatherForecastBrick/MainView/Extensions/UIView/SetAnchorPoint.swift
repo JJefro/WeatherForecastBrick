@@ -23,8 +23,8 @@ extension UIImageView {
         
         position.y -= oldPoint.y
         position.y += newPoint.y
-        
-        layer.position = position
+
         layer.anchorPoint = point
+        layer.position = position
     }
 }

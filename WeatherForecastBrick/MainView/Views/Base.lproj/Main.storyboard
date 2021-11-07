@@ -132,16 +132,16 @@
                         <outlet property="brickHeight" destination="PFp-U8-jVG" id="711-vb-VdZ"/>
                         <outlet property="brickImageView" destination="dVz-60-Ax4" id="4D5-GF-ago"/>
                         <outlet property="currentLocationButton" destination="tcb-sg-wTf" id="SxK-Lo-ViS"/>
-                        <outlet property="info" destination="QKF-ef-83i" id="2KJ-U2-d5P"/>
+                        <outlet property="infoImageView" destination="QKF-ef-83i" id="2KJ-U2-d5P"/>
                         <outlet property="infoTitle" destination="czv-Eh-WW2" id="izS-Vf-v25"/>
                         <outlet property="searchButton" destination="G27-OP-6ze" id="CF5-kS-nEh"/>
                         <outlet property="temperatureLabel" destination="L5I-gn-y4z" id="tpO-gf-CWX"/>
-                        <outlet property="weatherCondition" destination="5wa-tc-hHD" id="qNM-Ek-v8t"/>
+                        <outlet property="weatherConditionLabel" destination="5wa-tc-hHD" id="qNM-Ek-v8t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="18.840579710144929" y="82.366071428571431"/>
+            <point key="canvasLocation" x="-13" y="-35"/>
         </scene>
     </scenes>
     <resources>
