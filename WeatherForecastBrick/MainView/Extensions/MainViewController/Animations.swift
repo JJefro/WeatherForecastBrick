@@ -16,8 +16,8 @@ extension MainViewController {
                 brickModel.state = .brickWentUp
                 brickImageView.transform = CGAffineTransform(translationX: 0, y: -300)
                 temperatureLabel.transform = CGAffineTransform(translationX: -300, y: 0)
-                weatherCondition.transform = CGAffineTransform(translationX: -300, y: 0)
-                info.transform = CGAffineTransform(translationX: 0, y: 300)
+                weatherConditionLabel.transform = CGAffineTransform(translationX: -300, y: 0)
+                infoImageView.transform = CGAffineTransform(translationX: 0, y: 300)
                 infoTitle.transform = CGAffineTransform(translationX: 0, y: 300)
                 searchView.transform = CGAffineTransform(translationX: 0, y: (-view.frame.size.height / 2) - 50)
             } else {
@@ -35,8 +35,8 @@ extension MainViewController {
                 brickModel.state = .brickWentUp
                 brickImageView.transform = CGAffineTransform(translationX: 0, y: -300)
                 temperatureLabel.transform = CGAffineTransform(translationX: -300, y: 0)
-                weatherCondition.transform = CGAffineTransform(translationX: -300, y: 0)
-                info.transform = CGAffineTransform(translationX: 0, y: 300)
+                weatherConditionLabel.transform = CGAffineTransform(translationX: -300, y: 0)
+                infoImageView.transform = CGAffineTransform(translationX: 0, y: 300)
                 infoTitle.transform = CGAffineTransform(translationX: 0, y: 300)
                 areaLabel.transform = CGAffineTransform(translationX: 0, y: 300)
                 searchButton.transform = CGAffineTransform(translationX: 0, y: 300)
@@ -53,8 +53,8 @@ extension MainViewController {
     private func returnElementsBack() {
         brickImageView.transform = .identity
         temperatureLabel.transform = .identity
-        weatherCondition.transform = .identity
-        info.transform = .identity
+        weatherConditionLabel.transform = .identity
+        infoImageView.transform = .identity
         infoTitle.transform = .identity
         areaLabel.transform = .identity
         searchButton.transform = .identity

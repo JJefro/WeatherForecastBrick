@@ -26,7 +26,7 @@
 "weatherCondition_clouds"       = "clouds";
 "weatherCondition_unknown"      = "unknown";
 
-"searchInfo_title"       = "City:";
-"searchInfo_placeholder" = "Type city name...";
+"searchView_title"                = "City:";
+"searchView_TextFieldPlaceholder" = "Type city name...";
 
 "searchView_hideButton" = "Hide";
