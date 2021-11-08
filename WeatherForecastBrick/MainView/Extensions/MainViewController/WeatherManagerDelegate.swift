@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension MainViewController: WeatherManagerDelegate {
-    
+
     func willFetchWeather() {
         loadingView.isHidden = false
     }
@@ -39,8 +39,16 @@ extension MainViewController: WeatherManagerDelegate {
         loadingView.isHidden = true
         brickImageView.isHidden = true
         currentLocationButton.isEnabled = true
-        searchButton.isEnabled = false
         let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
+        alert.showAlert()
+    }
+
+    func getErrorFromServer(error: WeatherError) {
+        loadingView.isHidden = true
+        brickImageView.isHidden = true
+        currentLocationButton.isEnabled = true
+        let alert = UIAlertController(title: error.cod, message: error.message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
         alert.showAlert()
     }

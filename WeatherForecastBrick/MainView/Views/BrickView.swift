@@ -16,6 +16,7 @@ class BrickView: UIImageView {
         super.layoutSubviews()
         removeAnimation()
 
+        self.accessibilityIdentifier = MainViewAccessibilityID.brickImageView
         self.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.layer.position = CGPoint(x: UIScreen.main.bounds.width/2, y: 227.5)
     }

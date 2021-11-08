@@ -15,8 +15,8 @@ extension MainViewController {
     func configure() {
         bind()
         makeLoadingViewConstraints()
-        makeSearchViewConstraints()
         makeInfoViewConstraints()
+        makeSearchViewConstraints()
         createAccessibilityIdentifiers()
         
         brickImageView.layer.zPosition = 1
@@ -45,7 +45,7 @@ extension MainViewController {
         searchView.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(20)
             make.height.equalTo(150)
-            make.top.equalTo(infoImageView.snp.bottom)
+            make.top.equalTo(view.snp.bottom)
         }
     }
 
