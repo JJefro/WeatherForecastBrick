@@ -11,7 +11,6 @@ extension MainViewController {
 
     func createAccessibilityIdentifiers() {
         view.accessibilityIdentifier = MainViewAccessibilityID.mainView
-        brickImageView.accessibilityIdentifier = MainViewAccessibilityID.brickImageView
         temperatureLabel.accessibilityIdentifier = MainViewAccessibilityID.temperatureLabel
         infoImageView.accessibilityIdentifier = MainViewAccessibilityID.infoImageView
         infoTitle.accessibilityIdentifier = MainViewAccessibilityID.infoTitle

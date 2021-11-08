@@ -11,6 +11,7 @@ import CoreLocation
 protocol WeatherManagerDelegate: AnyObject {
     func updateWeather(_ weatherManager: WeatherManager, weather: WeatherModel)
     func willFetchWeather()
+    func getErrorFromServer(error: WeatherError)
     func didFailWithError(error: Error)
 }
 
@@ -65,10 +66,12 @@ struct WeatherManager {
             let decoderData = try decoder.decode(WeatherData.self, from: weatherData)
             return WeatherModel(data: decoderData)
         } catch {
-            DispatchQueue.main.async {
-                delegate?.didFailWithError(error: error)
+            if let decoderErrorData = try? decoder.decode(WeatherError.self, from: weatherData) {
+                DispatchQueue.main.async {
+                    delegate?.getErrorFromServer(error: decoderErrorData)
+                }
             }
-            return nil
         }
+        return nil
     }
 }

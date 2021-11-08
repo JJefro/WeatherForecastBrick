@@ -6,16 +6,45 @@
 //
 
 import XCTest
+import SnapshotTesting
 @testable import WeatherForecastBrick
+
+fileprivate extension UIView {
+    func sizeToSystemLayoutSize() {
+        frame = CGRect(origin: .zero, size: systemLayoutSizeFitting(UIView.layoutFittingExpandedSize))
+    }
+}
 
 class WeatherForecastBrickTests: XCTestCase {
 
+    var sut: MainViewController!
+
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        sut = UIStoryboard(name: "Main", bundle: Bundle(for: MainViewController.self)).instantiateInitialViewController()
+        sut.loadViewIfNeeded()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        sut = nil
+    }
+
+    func test_MainViewController_DarkMode() throws {
+        assertSnapshot(matching: sut, as: .image())
+        assertSnapshot(matching: sut, as: .recursiveDescription())
+    }
+
+    func test_SearchView_DarkMode() throws {
+        let searchView = SearchView()
+        assertSnapshot(matching: searchView, as: .recursiveDescription())
+    }
+
+    func test_InfoView_DarkMode() throws {
+        let infoView = InfoView()
+        assertSnapshot(matching: infoView, as: .recursiveDescription())
+    }
+
+    func test_LoadingView_DarkMode() throws {
+        assertSnapshot(matching: sut.loadingView, as: .recursiveDescription())
     }
 
     func testExample() throws {
@@ -29,5 +58,4 @@ class WeatherForecastBrickTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

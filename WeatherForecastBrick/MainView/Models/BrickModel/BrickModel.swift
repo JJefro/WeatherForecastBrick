@@ -90,7 +90,7 @@ class BrickModel {
                 animateBrick(with: 9)
             case 11...14:
                 animateBrick(with: 13)
-            case 7...10:
+            case 6...10:
                 animateBrick(with: 15)
             default: state = .brickCalmedDown
             }

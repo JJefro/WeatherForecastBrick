@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9703C78827351786005A7301 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9703C78727351786005A7301 /* R.generated.swift */; };
 		9703C793273517DB005A7301 /* WeatherForecastBrickUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9703C792273517DB005A7301 /* WeatherForecastBrickUITests.swift */; };
-		9703C79D27351896005A7301 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 9703C79C27351896005A7301 /* SnapshotTesting */; };
 		972F56942728405D00B3555F /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F56932728405D00B3555F /* InfoView.swift */; };
 		972F56962728722900B3555F /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F56952728722900B3555F /* Animations.swift */; };
 		97550DBE2737B5FB00B3419C /* MainView + AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97550DBD2737B5FB00B3419C /* MainView + AccessibilityIdentifiers.swift */; };
@@ -26,6 +25,8 @@
 		97CA48142725C83E002C4A0B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CA48132725C83E002C4A0B /* LocationManager.swift */; };
 		97CA48172725C9FE002C4A0B /* UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CA48162725C9FE002C4A0B /* UITextFieldDelegate.swift */; };
 		97CD08662735A94500CACB0D /* BrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CD08652735A94500CACB0D /* BrickView.swift */; };
+		97D2960727390DE1008DF1DE /* WeatherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D2960627390DE1008DF1DE /* WeatherError.swift */; };
+		97D2960A27391A0E008DF1DE /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 97D2960927391A0E008DF1DE /* SnapshotTesting */; };
 		97D6D0FF2721DC3100056C07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D6D0FE2721DC3100056C07 /* AppDelegate.swift */; };
 		97D6D1012721DC3100056C07 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D6D1002721DC3100056C07 /* SceneDelegate.swift */; };
 		97D6D1032721DC3100056C07 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D6D1022721DC3100056C07 /* MainViewController.swift */; };
@@ -94,6 +95,7 @@
 		97CA48132725C83E002C4A0B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		97CA48162725C9FE002C4A0B /* UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldDelegate.swift; sourceTree = "<group>"; };
 		97CD08652735A94500CACB0D /* BrickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrickView.swift; sourceTree = "<group>"; };
+		97D2960627390DE1008DF1DE /* WeatherError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherError.swift; sourceTree = "<group>"; };
 		97D6D0FB2721DC3100056C07 /* WeatherForecastBrick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherForecastBrick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97D6D0FE2721DC3100056C07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97D6D1002721DC3100056C07 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,7 +126,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9703C79D27351896005A7301 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97D2960A27391A0E008DF1DE /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +363,7 @@
 				97AD56E3272220EF00627130 /* WeatherManager.swift */,
 				97AD56E127221C9900627130 /* WeatherModel.swift */,
 				97AD56E52722211800627130 /* WeatherData.swift */,
+				97D2960627390DE1008DF1DE /* WeatherError.swift */,
 				97EF18252723523D008C7821 /* Weather.swift */,
 			);
 			path = WeatherModel;
@@ -401,7 +404,6 @@
 			);
 			name = WeatherForecastBrickUITests;
 			packageProductDependencies = (
-				9703C79C27351896005A7301 /* SnapshotTesting */,
 			);
 			productName = WeatherForecastBrickUITests;
 			productReference = 9703C790273517DB005A7301 /* WeatherForecastBrickUITests.xctest */;
@@ -421,6 +423,9 @@
 				97921A6E273855DF00932B07 /* PBXTargetDependency */,
 			);
 			name = WeatherForecastBrickTests;
+			packageProductDependencies = (
+				97D2960927391A0E008DF1DE /* SnapshotTesting */,
+			);
 			productName = WeatherForecastBrickTests;
 			productReference = 97921A69273855DF00932B07 /* WeatherForecastBrickTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -482,7 +487,7 @@
 			);
 			mainGroup = 97D6D0F22721DC3000056C07;
 			packageReferences = (
-				9703C79B27351896005A7301 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				97D2960827391A0E008DF1DE /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 97D6D0FC2721DC3100056C07 /* Products */;
 			projectDirPath = "";
@@ -658,6 +663,7 @@
 				97E8AD9E27258099008D5921 /* CustomTextField.swift in Sources */,
 				97FD933F2731230100546D68 /* BrickModel.swift in Sources */,
 				97FD93472732899700546D68 /* LocationManagerDelegate.swift in Sources */,
+				97D2960727390DE1008DF1DE /* WeatherError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -927,8 +933,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -938,7 +944,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -956,8 +962,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -967,7 +973,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1013,7 +1019,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9703C79B27351896005A7301 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+		97D2960827391A0E008DF1DE /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JJefro/swift-snapshot-testing";
 			requirement = {
@@ -1024,9 +1030,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9703C79C27351896005A7301 /* SnapshotTesting */ = {
+		97D2960927391A0E008DF1DE /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9703C79B27351896005A7301 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			package = 97D2960827391A0E008DF1DE /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */
