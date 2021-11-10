@@ -10,7 +10,7 @@ import UIKit
 
 class BrickView: UIImageView {
 
-    var isSwinging = true
+    var isSwinging = Bool()
 
     override func layoutSubviews() {
         super.layoutSubviews()

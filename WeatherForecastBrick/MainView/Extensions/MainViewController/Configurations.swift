@@ -24,9 +24,8 @@ extension MainViewController {
     }
 
     private func bind() {
-        weatherManager.delegate = self
+        manager.delegate = self
         searchView.delegate = self
-        locationManager.delegate = self
     }
 
     // MARK: - Info View Constraints
