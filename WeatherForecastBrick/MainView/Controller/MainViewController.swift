@@ -26,7 +26,7 @@ class MainViewController: UIViewController {
     
     var brickModel = BrickModel()
     
-    var weatherManager = WeatherManager()
+    var manager: WeatherModelProtocol = WeatherModel(locationService: LocationManager())
     var locationManager = LocationManager()
     
     var currentCity = String()
@@ -43,10 +43,12 @@ class MainViewController: UIViewController {
 
         brickModel.brickView = brickImageView
         brickModel.initialBrickHeight = brickHeight.constant
+
+        manager.updateWeatherAtCurrentLocation()
     }
 
     @IBAction func getCurrentLocation(_ sender: UIButton) {
-        locationManager.requestLocation()
+        manager.updateWeatherAtCurrentLocation()
     }
     
     @IBAction func searchButtonTapped(_ sender: UIButton) {
@@ -76,7 +78,7 @@ class MainViewController: UIViewController {
             }
         case .cancelled, .ended, .failed:
             if brickModel.panDelta > 80, brickModel.state != .brickWentUp {
-                weatherManager.fetchWeatherByCityName(cityName: currentCity)
+                manager.updateWeatherAt(city: currentCity)
             } else if brickModel.state != .brickWentUp {
                 brickModel.setBrickAnimation()
             }
@@ -93,14 +95,14 @@ class MainViewController: UIViewController {
     
     @objc func infoViewHideButtonTapped(_ sender: UIButton) {
         infoView.isHidden = true
-        weatherManager.fetchWeatherByCityName(cityName: currentCity)
+        manager.updateWeatherAt(city: currentCity)
         animateInfoView()
     }
 
     @objc func searchViewHideButtonTapped(_ sender: UIButton) {
         searchView.isHidden = true
         currentLocationButton.isEnabled = true
-        weatherManager.fetchWeatherByCityName(cityName: currentCity)
+        manager.updateWeatherAt(city: currentCity)
         animateSearchView()
     }
 }

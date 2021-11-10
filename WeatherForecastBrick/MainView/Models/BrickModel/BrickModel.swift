@@ -41,11 +41,11 @@ class BrickModel {
         }
     }
     
-    func changeBrickCondition(weather: WeatherModel) -> UIImage? {
+    func changeBrickCondition(weather: WeatherEntity) -> UIImage? {
         windForce = weather.windSpeed
         brickView.layer.zPosition = weather.condition != .fog ? 1 : -1
         brickView.alpha = 1
-        if weather.condition == .sunny, weather.tempFeelsLike > 29 {
+        if weather.condition == .sunny, weather.temperatureFeelsLike > 29 {
             return R.image.mainView.brick.cracksBrick()
         } else {
             switch weather.condition {
