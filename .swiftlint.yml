@@ -8,9 +8,9 @@ excluded:
 - Carthage
 - Pods
 - SwiftLint/Common/3rdPartyLib
-- WeatherForecastBrick/Supporting Files/SceneDelegate.swift
+- WeatherForecastBrick/SupportingFiles/SceneDelegate.swift
 - WeatherForecastBrick/MainView/Models/WeatherModel/WeatherData.swift
-- WeatherForecastBrick/Supporting Files/Secrets.swift
+- WeatherForecastBrick/SupportingFiles/Secrets.swift
 - R.generated.swift
 line_length:
     warning: 170
