@@ -320,7 +320,7 @@
 				97AD56E027221C7800627130 /* MainView */,
 				97DB0D03273BA809007C8E4A /* Resources */,
 				97D6D10C2721DC3200056C07 /* Info.plist */,
-				97DB0D04273BA847007C8E4A /* Supporting Files */,
+				97DB0D04273BA847007C8E4A /* SupportingFiles */,
 			);
 			path = WeatherForecastBrick;
 			sourceTree = "<group>";
@@ -335,7 +335,7 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		97DB0D04273BA847007C8E4A /* Supporting Files */ = {
+		97DB0D04273BA847007C8E4A /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
 				97D6D0FE2721DC3100056C07 /* AppDelegate.swift */,
@@ -344,7 +344,7 @@
 				97C448212722C31A00332A12 /* Secrets.plist */,
 				97C448252722C45B00332A12 /* Secrets.swift */,
 			);
-			path = "Supporting Files";
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		97DB0D0B273BD78D007C8E4A /* Location */ = {
