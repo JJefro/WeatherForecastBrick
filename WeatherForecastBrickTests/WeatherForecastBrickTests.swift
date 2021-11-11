@@ -9,12 +9,6 @@ import XCTest
 import SnapshotTesting
 @testable import WeatherForecastBrick
 
-fileprivate extension UIView {
-    func sizeToSystemLayoutSize() {
-        frame = CGRect(origin: .zero, size: systemLayoutSizeFitting(UIView.layoutFittingExpandedSize))
-    }
-}
-
 class WeatherForecastBrickTests: XCTestCase {
 
     func test_weatherRain() throws {
