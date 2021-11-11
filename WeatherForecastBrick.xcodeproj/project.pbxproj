@@ -319,8 +319,8 @@
 				9703C78727351786005A7301 /* R.generated.swift */,
 				97AD56E027221C7800627130 /* MainView */,
 				97DB0D03273BA809007C8E4A /* Resources */,
-				97D6D10C2721DC3200056C07 /* Info.plist */,
 				97DB0D04273BA847007C8E4A /* SupportingFiles */,
+				97D6D10C2721DC3200056C07 /* Info.plist */,
 			);
 			path = WeatherForecastBrick;
 			sourceTree = "<group>";
