@@ -19,6 +19,7 @@ protocol WeatherModelProtocol {
 
     func updateWeatherAtCurrentLocation()
     func updateWeatherAt(city: String)
+    func updateWeatherAtCity()
 }
 
 class WeatherModel: WeatherModelProtocol {
@@ -29,6 +30,7 @@ class WeatherModel: WeatherModelProtocol {
     private let locationService: LocationManagerProtocol
 
     private let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=\(Secrets.apiKey)&units=metric"
+    private var currentCity = String()
 
     init(locationService: LocationManagerProtocol) {
         self.locationService = locationService
@@ -48,15 +50,23 @@ class WeatherModel: WeatherModelProtocol {
         }
     }
 
-    func updateWeatherAt(city: String) {
-        let text = NSMutableString(string: city) as CFMutableString
-        CFStringTransform(text, nil, kCFStringTransformStripCombiningMarks, false)
-        var city = (text as NSMutableString).copy() as! NSString
-        city = city.replacingOccurrences(of: " ", with: "%20") as NSString
+    func updateWeatherAtCity() {
+        updateWeatherAt(city: currentCity)
+    }
 
-        let urlString = "\(weatherURL)&q=\(city)"
-        delegate?.weatherModel(self, willUpdate: weather)
-        performRequest(with: urlString)
+    func updateWeatherAt(city: String) {
+        if !city.isEmpty {
+            let text = NSMutableString(string: city) as CFMutableString
+            CFStringTransform(text, nil, kCFStringTransformStripCombiningMarks, false)
+            var city = (text as NSMutableString).copy() as! NSString
+            city = city.replacingOccurrences(of: " ", with: "%20") as NSString
+
+            let urlString = "\(weatherURL)&q=\(city)"
+            delegate?.weatherModel(self, willUpdate: weather)
+            performRequest(with: urlString)
+        } else {
+            updateWeatherAtCity()
+        }
     }
     
     private func performRequest(with urlString: String) {
@@ -85,6 +95,7 @@ class WeatherModel: WeatherModelProtocol {
         let decoder = JSONDecoder()
         do {
             let decoderData = try decoder.decode(WeatherData.self, from: weatherData)
+            currentCity = decoderData.name
             return WeatherEntity(data: decoderData)
         } catch {
             if let decoderErrorData = try? decoder.decode(WeatherError.self, from: weatherData) {

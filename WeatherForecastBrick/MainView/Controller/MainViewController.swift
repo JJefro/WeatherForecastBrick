@@ -28,8 +28,6 @@ class MainViewController: UIViewController {
     
     var model: WeatherModelProtocol = WeatherModel(locationService: LocationManager())
     
-    var currentCity = String()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -77,7 +75,7 @@ class MainViewController: UIViewController {
             }
         case .cancelled, .ended, .failed:
             if brickModel.panDelta > 80, brickModel.state != .brickWentUp {
-                model.updateWeatherAt(city: currentCity)
+                model.updateWeatherAtCity()
             } else if brickModel.state != .brickWentUp {
                 brickModel.setBrickAnimation()
             }
@@ -94,14 +92,14 @@ class MainViewController: UIViewController {
     
     @objc func infoViewHideButtonTapped(_ sender: UIButton) {
         infoView.isHidden = true
-        model.updateWeatherAt(city: currentCity)
+        model.updateWeatherAtCity()
         animateInfoView()
     }
 
     @objc func searchViewHideButtonTapped(_ sender: UIButton) {
         searchView.isHidden = true
         currentLocationButton.isEnabled = true
-        model.updateWeatherAt(city: currentCity)
+        model.updateWeatherAtCity()
         animateSearchView()
     }
 }
