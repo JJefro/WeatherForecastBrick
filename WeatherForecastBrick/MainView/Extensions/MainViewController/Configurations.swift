@@ -24,7 +24,7 @@ extension MainViewController {
     }
 
     private func bind() {
-        manager.delegate = self
+        model.delegate = self
         searchView.delegate = self
     }
 

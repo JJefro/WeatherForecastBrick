@@ -43,3 +43,31 @@ extension WeatherEntity {
         temperatureFeelsLike = data.main.feels_like
     }
 }
+
+#if DEBUG
+extension WeatherEntity {
+    static var mockRain: Self {
+        .init(conditionID: 500, visibility: 10_000, cityName: "London", temperature: 10, countryCode: "uk", windSpeed: 10, temperatureFeelsLike: 5)
+    }
+
+    static var mockSnow: Self {
+        .init(conditionID: 600, visibility: 10_000, cityName: "Riga", temperature: -99, countryCode: "lv", windSpeed: 5, temperatureFeelsLike: -100)
+    }
+
+    static var mockWind: Self {
+        .init(conditionID: 781, visibility: 5_000, cityName: "Florida", temperature: 20, countryCode: "us", windSpeed: 35, temperatureFeelsLike: 21)
+    }
+
+    static var mockThunderstorm: Self {
+        .init(conditionID: 200, visibility: 5_000, cityName: "Moscow", temperature: 13, countryCode: "ru", windSpeed: 23, temperatureFeelsLike: 9)
+    }
+
+    static var mockFog: Self {
+        .init(conditionID: 700, visibility: 100, cityName: "London", temperature: 8, countryCode: "uk", windSpeed: 0, temperatureFeelsLike: 4)
+    }
+
+    static var mockSunny: Self {
+        .init(conditionID: 800, visibility: 20_000, cityName: "Abu Dhabi", temperature: 35, countryCode: "ae", windSpeed: 3, temperatureFeelsLike: 30)
+    }
+}
+#endif
