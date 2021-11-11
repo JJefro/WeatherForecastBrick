@@ -1,7 +1,0 @@
-<WeatherForecastBrick.LoadingView; frame = (0 0; 0 0); layer = <CALayer>>
-   | <UIVisualEffectView; frame = (0 0; 0 0); layer = <CALayer>> effect=<UIBlurEffect> style=UIBlurEffectStyleSystemUltraThinMaterialDark
-   |    | <_UIVisualEffectBackdropView; frame = (0 0; 0 0); autoresize = W+H; userInteractionEnabled = NO; layer = <UICABackdropLayer>>
-   | <NVActivityIndicatorView.NVActivityIndicatorView; frame = (-30 -30; 60 60); layer = <CALayer>>
-   |    | <CAShapeLayer> (layer)
-   |    | <CAShapeLayer> (layer)
-   |    | <CAShapeLayer> (layer)
