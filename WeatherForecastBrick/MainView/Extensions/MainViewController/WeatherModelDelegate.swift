@@ -19,7 +19,6 @@ extension MainViewController: WeatherModelDelegate {
         temperatureLabel.text = weather.tempString
         weatherConditionLabel.text = weather.condition.condition
         areaLabel.text = "\(weather.cityName), \(area)"
-        currentCity = weather.cityName
 
         UIView.transition(with: brickImageView, duration: 1, options: [.transitionCrossDissolve]) { [self] in
             brickImageView.image = brickModel.changeBrickCondition(weather: weather)
