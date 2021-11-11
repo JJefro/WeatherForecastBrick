@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 extension MainViewController: WeatherModelDelegate {
+    
     func weatherModel(_ weatherModel: WeatherModelProtocol, willUpdate weather: WeatherEntity?) {
         loadingView.isHidden = false
     }
