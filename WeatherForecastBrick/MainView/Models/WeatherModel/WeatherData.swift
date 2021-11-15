@@ -9,7 +9,7 @@ import Foundation
 
 struct WeatherData: Codable {
 
-    let name: String
+    let cityName: String
     let weather: [Weather]
     let main: Main
     let visibility: Int
@@ -17,7 +17,11 @@ struct WeatherData: Codable {
     let sys: Sys
 
     struct Weather: Codable {
-        let id: Int
+        let identifier: Int
+
+        private enum CodingKeys: String, CodingKey {
+            case identifier = "id"
+        }
     }
 
     struct Wind: Codable {
@@ -25,11 +29,29 @@ struct WeatherData: Codable {
     }
     
     struct Main: Codable {
-        let temp: Double
-        let feels_like: Double
+        let temperature: Double
+        let feelsLike: Double
+
+        private enum CodingKeys: String, CodingKey {
+            case temperature = "temp"
+            case feelsLike = "feelsLike"
+        }
     }
 
     struct Sys: Codable {
-        let country: String
+        let countryCode: String
+
+        private enum CodingKeys: String, CodingKey {
+            case countryCode = "country"
+        }
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case cityName = "name"
+        case weather
+        case main
+        case visibility
+        case wind
+        case sys
     }
 }
