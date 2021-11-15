@@ -1,6 +1,7 @@
 disabled_rules:
 - trailing_whitespace
 - force_cast
+- implicit_getter
 opt_in_rules:
 - empty_count
 - empty_string
@@ -9,8 +10,6 @@ excluded:
 - Pods
 - SwiftLint/Common/3rdPartyLib
 - WeatherForecastBrick/SupportingFiles/SceneDelegate.swift
-- WeatherForecastBrick/MainView/Models/WeatherModel/WeatherData.swift
-- WeatherForecastBrick/SupportingFiles/Secrets.swift
 - R.generated.swift
 line_length:
     warning: 170
@@ -34,5 +33,6 @@ file_length:
 cyclomatic_complexity:
     warning: 15
     error: 25
+nesting:
+    type_level: 2
 reporter: "xcode"
-
