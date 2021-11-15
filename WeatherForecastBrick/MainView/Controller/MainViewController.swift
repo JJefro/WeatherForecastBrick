@@ -99,4 +99,16 @@ class MainViewController: UIViewController {
         model.updateWeatherAtCity()
         animateSearchView()
     }
+
+    func showAlert(withTitle title: String?, withMessage message: String?, dismissAfter: Bool) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        if !dismissAfter {
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                alert.dismiss(animated: true, completion: nil)
+            }
+        }
+        self.present(alert, animated: true, completion: nil)
+    }
 }

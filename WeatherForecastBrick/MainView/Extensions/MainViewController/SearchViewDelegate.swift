@@ -15,15 +15,7 @@ extension MainViewController: SearchViewDelegate {
         searchView.isHidden = true
         animateSearchView()
         if text.isEmpty {
-            showAlert()
-        }
-    }
-
-    private func showAlert() {
-        let alert = UIAlertController(title: "", message: "Weather update", preferredStyle: UIAlertController.Style.alert)
-        alert.showAlert()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            alert.dismiss(animated: true, completion: nil)
+            showAlert(withTitle: nil, withMessage: "Weather update", dismissAfter: true)
         }
     }
 }

@@ -36,6 +36,7 @@ class WeatherModel: WeatherModelProtocol {
     
     init(locationService: LocationManagerProtocol) {
         self.locationService = locationService
+
         network.delegate = self
     }
     
