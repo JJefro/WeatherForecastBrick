@@ -31,10 +31,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-
-        infoView.infoHideButton.addTarget(self, action: #selector(infoViewHideButtonTapped(_:)), for: .touchUpInside)
-        searchView.hideButton.addTarget(self, action: #selector(searchViewHideButtonTapped(_:)), for: .touchUpInside)
-
+        
         addTapGesture(view: infoImageView)
         addPanGesture(view: brickImageView)
 
@@ -66,7 +63,7 @@ class MainViewController: UIViewController {
     
     @objc func handlePanGesture(_ sender: UIPanGestureRecognizer) {
         switch sender.state {
-        case .changed:
+        case .changed, .began, .possible:
             let translation = sender.translation(in: view).y
             if brickModel.initialBrickHeight < brickHeight.constant + translation {
                 brickHeight.constant += translation
@@ -81,7 +78,7 @@ class MainViewController: UIViewController {
             }
             brickHeight.constant -= brickModel.panDelta
             brickModel.panDelta = 0
-        default: break
+        @unknown default: break
         }
     }
     

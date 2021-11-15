@@ -34,13 +34,13 @@ struct WeatherEntity {
 
 extension WeatherEntity {
     init(data: WeatherData) {
-        conditionID = data.weather[0].id
+        conditionID = data.weather[0].identifier
         visibility  = data.visibility
-        cityName    = data.name
-        temperature = data.main.temp
-        countryCode = data.sys.country
+        cityName    = data.cityName
+        temperature = data.main.temperature
+        countryCode = data.sys.countryCode
         windSpeed   = data.wind.speed
-        temperatureFeelsLike = data.main.feels_like
+        temperatureFeelsLike = data.main.feelsLike
     }
 }
 

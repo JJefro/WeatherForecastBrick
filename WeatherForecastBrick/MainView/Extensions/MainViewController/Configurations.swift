@@ -21,11 +21,19 @@ extension MainViewController {
         
         brickImageView.layer.zPosition = 1
         infoTitle.text = R.string.localizable.infoView_title()
+        
+        addTargetsForElements()
     }
 
     private func bind() {
         model.delegate = self
         searchView.delegate = self
+    }
+
+    // MARK: - Add Targets For UI Elements
+    private func addTargetsForElements() {
+        infoView.infoHideButton.addTarget(self, action: #selector(infoViewHideButtonTapped(_:)), for: .touchUpInside)
+        searchView.hideButton.addTarget(self, action: #selector(searchViewHideButtonTapped(_:)), for: .touchUpInside)
     }
 
     // MARK: - Info View Constraints
