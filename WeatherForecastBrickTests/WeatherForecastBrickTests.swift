@@ -68,8 +68,11 @@ class MockWeatherModel: WeatherModelProtocol {
     func updateWeatherAtCurrentLocation() {
         delegate?.weatherModel(self, didUpdate: mockWeather)
     }
-
+    
     func updateWeatherAt(city: String) {
-
     }
+
+    func updateWeatherAtCity() {
+    }
+
 }
