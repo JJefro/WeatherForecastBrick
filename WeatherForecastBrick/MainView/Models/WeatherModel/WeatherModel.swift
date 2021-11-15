@@ -18,6 +18,7 @@ protocol WeatherModelDelegate: AnyObject {
 
 protocol WeatherModelProtocol {
     var delegate: WeatherModelDelegate? { get set }
+    var networkDelegate: NetworkManagerDelegate? { get set }
     
     func updateWeatherAtCurrentLocation()
     func updateWeatherAt(city: String)
@@ -25,7 +26,8 @@ protocol WeatherModelProtocol {
 }
 
 class WeatherModel: WeatherModelProtocol {
-    
+
+    weak var networkDelegate: NetworkManagerDelegate?
     weak var delegate: WeatherModelDelegate?
     
     private(set) var weather: WeatherEntity?
@@ -36,7 +38,6 @@ class WeatherModel: WeatherModelProtocol {
     
     init(locationService: LocationManagerProtocol) {
         self.locationService = locationService
-        network.delegate = self
     }
     
     func updateWeatherAtCurrentLocation() {
