@@ -20,7 +20,6 @@
 		97AD56E4272220EF00627130 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AD56E3272220EF00627130 /* WeatherModel.swift */; };
 		97AD56E62722211800627130 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AD56E52722211800627130 /* WeatherData.swift */; };
 		97B18362272B19480017937E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 97B18364272B19480017937E /* Localizable.strings */; };
-		97BFE9EC272748F600D2D0BE /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BFE9EB272748F600D2D0BE /* ShowAlert.swift */; };
 		97C448222722C31A00332A12 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 97C448212722C31A00332A12 /* Secrets.plist */; };
 		97C448262722C45B00332A12 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C448252722C45B00332A12 /* Secrets.swift */; };
 		97CA48142725C83E002C4A0B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CA48132725C83E002C4A0B /* LocationManager.swift */; };
@@ -92,7 +91,6 @@
 		97AD56E52722211800627130 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		97B18363272B19480017937E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		97B18365272B19960017937E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		97BFE9EB272748F600D2D0BE /* ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
 		97C448212722C31A00332A12 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		97C448252722C45B00332A12 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		97CA48132725C83E002C4A0B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -266,21 +264,12 @@
 			path = MainView;
 			sourceTree = "<group>";
 		};
-		97BFE9EA272748CF00D2D0BE /* UIAlertController */ = {
-			isa = PBXGroup;
-			children = (
-				97BFE9EB272748F600D2D0BE /* ShowAlert.swift */,
-			);
-			path = UIAlertController;
-			sourceTree = "<group>";
-		};
 		97C448272722C5D600332A12 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				97F9EAB8272336EE00A7AE3F /* MainViewController */,
 				97CA48152725C9DD002C4A0B /* SearchView */,
 				97E40142272AAD950058C4F7 /* UIView */,
-				97BFE9EA272748CF00D2D0BE /* UIAlertController */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -685,7 +674,6 @@
 				97F29BF0272B2C6400E31929 /* CardButton.swift in Sources */,
 				97CD08662735A94500CACB0D /* BrickView.swift in Sources */,
 				972F56962728722900B3555F /* Animations.swift in Sources */,
-				97BFE9EC272748F600D2D0BE /* ShowAlert.swift in Sources */,
 				97F9EABE272340F500A7AE3F /* LoadingView.swift in Sources */,
 				97CA48172725C9FE002C4A0B /* UITextFieldDelegate.swift in Sources */,
 				97AD56E62722211800627130 /* WeatherData.swift in Sources */,

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import simd
 import UIKit
 
 protocol WeatherModelDelegate: AnyObject {

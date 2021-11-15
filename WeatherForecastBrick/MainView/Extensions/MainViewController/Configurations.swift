@@ -6,7 +6,6 @@
 //
 
 import SnapKit
-import CoreLocation
 import UIKit
 
 extension MainViewController {
