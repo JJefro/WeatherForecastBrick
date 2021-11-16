@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		9703C78827351786005A7301 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9703C78727351786005A7301 /* R.generated.swift */; };
 		9703C793273517DB005A7301 /* WeatherForecastBrickUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9703C792273517DB005A7301 /* WeatherForecastBrickUITests.swift */; };
+		9722903A2743CB61001CA247 /* WeatherForecastBrickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972290392743CB61001CA247 /* WeatherForecastBrickTests.swift */; };
 		972F56942728405D00B3555F /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F56932728405D00B3555F /* InfoView.swift */; };
 		972F56962728722900B3555F /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F56952728722900B3555F /* Animations.swift */; };
 		97550DBE2737B5FB00B3419C /* MainView + AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97550DBD2737B5FB00B3419C /* MainView + AccessibilityIdentifiers.swift */; };
 		97550DC02737BAC500B3419C /* MainView + AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97550DBF2737BAC500B3419C /* MainView + AccessibilityIdentifiers.swift */; };
 		977F6D13273FC67C00E192D1 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977F6D12273FC67C00E192D1 /* NetworkManager.swift */; };
 		97921A642737E7A400932B07 /* WeatherForecastBrickUITests + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97921A632737E7A400932B07 /* WeatherForecastBrickUITests + Extensions.swift */; };
-		97921A6C273855DF00932B07 /* WeatherForecastBrickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97921A6B273855DF00932B07 /* WeatherForecastBrickTests.swift */; };
+		97921A6C273855DF00932B07 /* WeatherForecastBrickSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97921A6B273855DF00932B07 /* WeatherForecastBrickSnapshotTests.swift */; };
 		97AD56E227221C9900627130 /* WeatherEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AD56E127221C9900627130 /* WeatherEntity.swift */; };
 		97AD56E4272220EF00627130 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AD56E3272220EF00627130 /* WeatherModel.swift */; };
 		97AD56E62722211800627130 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AD56E52722211800627130 /* WeatherData.swift */; };
@@ -75,6 +76,7 @@
 		9703C78727351786005A7301 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		9703C790273517DB005A7301 /* WeatherForecastBrickUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherForecastBrickUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9703C792273517DB005A7301 /* WeatherForecastBrickUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastBrickUITests.swift; sourceTree = "<group>"; };
+		972290392743CB61001CA247 /* WeatherForecastBrickTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastBrickTests.swift; sourceTree = "<group>"; };
 		972F56932728405D00B3555F /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		972F56952728722900B3555F /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		97550DBD2737B5FB00B3419C /* MainView + AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainView + AccessibilityIdentifiers.swift"; sourceTree = "<group>"; };
@@ -82,7 +84,7 @@
 		977F6D12273FC67C00E192D1 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		97921A632737E7A400932B07 /* WeatherForecastBrickUITests + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherForecastBrickUITests + Extensions.swift"; sourceTree = "<group>"; };
 		97921A69273855DF00932B07 /* WeatherForecastBrickTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherForecastBrickTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		97921A6B273855DF00932B07 /* WeatherForecastBrickTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastBrickTests.swift; sourceTree = "<group>"; };
+		97921A6B273855DF00932B07 /* WeatherForecastBrickSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastBrickSnapshotTests.swift; sourceTree = "<group>"; };
 		97AD56DA27220CC800627130 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		97AD56DB27220CCF00627130 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		97AD56DC27220D6200627130 /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
@@ -205,7 +207,8 @@
 		97921A6A273855DF00932B07 /* WeatherForecastBrickTests */ = {
 			isa = PBXGroup;
 			children = (
-				97921A6B273855DF00932B07 /* WeatherForecastBrickTests.swift */,
+				972290392743CB61001CA247 /* WeatherForecastBrickTests.swift */,
+				97921A6B273855DF00932B07 /* WeatherForecastBrickSnapshotTests.swift */,
 			);
 			path = WeatherForecastBrickTests;
 			sourceTree = "<group>";
@@ -655,7 +658,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97921A6C273855DF00932B07 /* WeatherForecastBrickTests.swift in Sources */,
+				97921A6C273855DF00932B07 /* WeatherForecastBrickSnapshotTests.swift in Sources */,
+				9722903A2743CB61001CA247 /* WeatherForecastBrickTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
