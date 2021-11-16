@@ -48,7 +48,7 @@ class WeatherModel: WeatherModelProtocol {
                 self.delegate?.weatherModel(self, errorOccured: error)
             case let .success(location):
                 self.network.getWeatherFrom(lat: location.lat, lon: location.lon) { weather in
-                    self.fetchWeather(weather)
+                    self.transferWeatherToController(weather)
                 }
             }
         }
@@ -67,14 +67,14 @@ class WeatherModel: WeatherModelProtocol {
 
             delegate?.weatherModel(self, willUpdate: weather)
             network.getWeatherAt(city: city) { [self] weather in
-                fetchWeather(weather)
+                transferWeatherToController(weather)
             }
         } else {
             updateWeatherAtCity()
         }
     }
 
-    private func fetchWeather(_ weather: Result<WeatherEntity, Error>) {
+    private func transferWeatherToController(_ weather: Result<WeatherEntity, Error>) {
         switch weather {
         case let .success(weather):
             self.delegate?.weatherModel(self, didUpdate: weather)

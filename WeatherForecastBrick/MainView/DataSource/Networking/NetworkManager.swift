@@ -7,31 +7,45 @@
 
 import Foundation
 
+typealias Completion = (Result<WeatherEntity, Error>) -> Void
+typealias WeatherCompletion = ((_ weather: Result<WeatherEntity, Error>) -> Void)
+
+protocol NetworkManagerProtocol {
+    var weatherURL: String { get set }
+    var networkRequestCompletion: (Completion)? { get set }
+    var delegate: NetworkManagerDelegate? { get set }
+
+    func getWeatherFrom(lat: Double, lon: Double, completion: @escaping WeatherCompletion)
+    func getWeatherAt(city: NSString, completion: @escaping WeatherCompletion)
+    func performRequest(with urlString: String, completion: @escaping Completion)
+    func parseJSON(_ weatherData: Data) -> WeatherEntity?
+}
+
 protocol NetworkManagerDelegate: AnyObject {
     func getErrorFromServer(error: WeatherError)
 }
 
-class NetworkManager {
+class NetworkManager: NetworkManagerProtocol {
 
-    private let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=\(Secrets.apiKey)&units=metric"
-    private var networkRequestCompletion: ((Result<WeatherEntity, Error>) -> Void)?
+    var weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=\(Secrets.apiKey)&units=metric"
+    var networkRequestCompletion: (Completion)?
     weak var delegate: NetworkManagerDelegate?
 
-    func getWeatherFrom(lat: Double, lon: Double, completion: @escaping (_ weather: Result<WeatherEntity, Error>) -> Void) {
+    func getWeatherFrom(lat: Double, lon: Double, completion: @escaping WeatherCompletion) {
         let urlString = "\(weatherURL)&lat=\(lat)&lon=\(lon)"
         performRequest(with: urlString) { weather in
             completion(weather)
         }
     }
 
-    func getWeatherAt(city: NSString, completion: @escaping (_ weather: Result<WeatherEntity, Error>) -> Void) {
+    func getWeatherAt(city: NSString, completion: @escaping WeatherCompletion) {
         let urlString = "\(weatherURL)&q=\(city)"
         performRequest(with: urlString) { weather in
             completion(weather)
         }
     }
 
-    private func performRequest(with urlString: String, completion: @escaping (Result<WeatherEntity, Error>) -> Void) {
+    func performRequest(with urlString: String, completion: @escaping Completion) {
         networkRequestCompletion = completion
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)
@@ -54,7 +68,7 @@ class NetworkManager {
         }
     }
 
-    private func parseJSON(_ weatherData: Data) -> WeatherEntity? {
+    func parseJSON(_ weatherData: Data) -> WeatherEntity? {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         do {

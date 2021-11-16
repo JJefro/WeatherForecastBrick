@@ -27,6 +27,7 @@ extension MainViewController {
 
 struct MainViewAccessibilityID {
 
+    // MARK: - MainView Elements
     static let mainView = "mainView"
 
     static let brickImageView = "mainView_brickImageView"
