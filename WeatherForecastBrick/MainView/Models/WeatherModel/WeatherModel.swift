@@ -12,7 +12,7 @@ protocol WeatherModelDelegate: AnyObject {
     func weatherModel(_ weatherModel: WeatherModelProtocol, willUpdate weather: WeatherEntity?)
     func weatherModel(_ weatherModel: WeatherModelProtocol, didUpdate weather: WeatherEntity)
     func weatherModel(_ weatherModel: WeatherModelProtocol, errorOccured error: Error)
-    func getErrorFromServer(error: WeatherError)
+    func getErrorFromServer(_ error: WeatherError)
 }
 
 protocol WeatherModelProtocol {
@@ -86,7 +86,7 @@ class WeatherModel: WeatherModelProtocol {
 }
 
 extension WeatherModel: NetworkManagerDelegate {
-    func getErrorFromServer(error: WeatherError) {
-        delegate?.getErrorFromServer(error: error)
+    func getErrorFromServer(_ error: WeatherError) {
+        delegate?.getErrorFromServer(error)
     }
 }
