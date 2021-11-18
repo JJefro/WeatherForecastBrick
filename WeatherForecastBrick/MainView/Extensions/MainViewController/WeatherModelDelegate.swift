@@ -41,7 +41,7 @@ extension MainViewController: WeatherModelDelegate {
         showAlert(withTitle: nil, withMessage: error.localizedDescription, dismissAfter: false)
     }
     
-    func getErrorFromServer(error: WeatherError) {
+    func getErrorFromServer(_ error: WeatherError) {
         loadingView.isHidden = true
         brickImageView.isHidden = true
         currentLocationButton.isEnabled = true
