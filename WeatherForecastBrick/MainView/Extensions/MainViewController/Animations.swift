@@ -12,14 +12,13 @@ extension MainViewController {
     
     func animateSearchView() {
         UIView.animate(withDuration: 1, delay: 0, options: []) { [self] in
-            if searchView.isHidden == false {
+            if isSearchShown {
                 brickModel.state = .brickWentUp
                 brickImageView.transform = CGAffineTransform(translationX: 0, y: -300)
                 temperatureLabel.transform = CGAffineTransform(translationX: -300, y: 0)
                 weatherConditionLabel.transform = CGAffineTransform(translationX: -300, y: 0)
                 infoImageView.transform = CGAffineTransform(translationX: 0, y: 300)
                 infoTitle.transform = CGAffineTransform(translationX: 0, y: 300)
-                searchView.transform = CGAffineTransform(translationX: 0, y: (-view.frame.size.height / 2) - 50)
             } else {
                 returnElementsBack()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

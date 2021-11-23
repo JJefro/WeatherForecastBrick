@@ -28,8 +28,10 @@
 
 "searchView_title"                = "City:";
 "searchView_TextFieldPlaceholder" = "Type city name...";
+"searchView_searchButton"         = "Search";
+"searchView_cancelButton"         = "Cancel";
 
-"searchView_hideButton" = "Hide";
+"errorAlert_actionButton"         = "OK";
 
 "locationError_locationNotFound"              = "Location not found. Try again later or use the search.";
 "locationError_locationServicesDisabled"      = "Location services disabled. Enable them in settings.";

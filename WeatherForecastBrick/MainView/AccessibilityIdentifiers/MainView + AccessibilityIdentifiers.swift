@@ -21,7 +21,6 @@ extension MainViewController {
 
         infoView.accessibilityIdentifier = MainViewAccessibilityID.infoView
         loadingView.accessibilityIdentifier = MainViewAccessibilityID.loadingView
-        searchView.accessibilityIdentifier = MainViewAccessibilityID.searchView
     }
 }
 
