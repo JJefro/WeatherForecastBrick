@@ -8,15 +8,17 @@
 import UIKit
 import CoreLocation
 
+typealias CompletionHandler = (Result<LocationCoordinate, Error>) -> Void
+
 protocol LocationManagerProtocol {
-    func requestLocation(completion: @escaping (Result<LocationCoordinate, Error>) -> Void)
+    func requestLocation(completion: @escaping CompletionHandler)
 }
 
 class LocationManager: NSObject, LocationManagerProtocol {
 
     private let locationManager = CLLocationManager()
     private var shouldIgnoreAuthorizationChange = false
-    private var locationRequestCompletion: ((Result<LocationCoordinate, Error>) -> Void)?
+    private var locationRequestCompletion: (CompletionHandler)?
 
     override init() {
         super.init()
@@ -28,7 +30,7 @@ class LocationManager: NSObject, LocationManagerProtocol {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
 
-    func requestLocation(completion: @escaping (Result<LocationCoordinate, Error>) -> Void) {
+    func requestLocation(completion: @escaping CompletionHandler) {
         if CLLocationManager.locationServicesEnabled() {
             locationRequestCompletion = completion
             if #available(iOS 14.0, *) {

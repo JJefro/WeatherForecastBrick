@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import WeatherForecastBrick
 
 class WeatherForecastBrickTests: XCTestCase {
 
@@ -28,5 +29,31 @@ class WeatherForecastBrickTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+}
 
+class MockNetworkManager: NetworkManagerProtocol {
+
+    weak var delegate: NetworkManagerDelegate?
+
+    let data: Data?
+    let response: URLResponse?
+    let error: Error?
+
+    init(data: Data?, response: URLResponse?, error: Error?) {
+        self.data = data
+        self.response = response
+        self.error = error
+    }
+
+    func getWeatherFrom(lat: Double, lon: Double, completion: @escaping WeatherCompletion) {
+
+    }
+
+    func getWeatherAt(city: NSString, completion: @escaping WeatherCompletion) {
+
+    }
+
+    func performRequest(with urlString: String, completion: @escaping Completion) {
+
+    }
 }

@@ -18,13 +18,13 @@ extension LocationError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .locationNotFound:
-            return "Location not found. Try again later or use the search."
+            return R.string.localizable.locationError_locationNotFound()
         case .locationServicesDisabled:
-            return "Location services disabled. Enable them in settings."
+            return R.string.localizable.locationError_locationServicesDisabled()
         case .locationServicesNotAuthorized:
-            return "Location services not authorized. Grant acces in settings."
+            return R.string.localizable.locationError_locationServicesNotAuthorized()
         case .unknownStatus:
-            return "Unknown location status."
+            return R.string.localizable.locationError_unknownStatus()
         }
     }
 }
