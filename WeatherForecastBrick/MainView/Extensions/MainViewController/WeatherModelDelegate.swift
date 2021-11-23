@@ -38,13 +38,13 @@ extension MainViewController: WeatherModelDelegate {
         loadingView.isHidden = true
         brickImageView.isHidden = true
         currentLocationButton.isEnabled = true
-        showAlert(withTitle: nil, withMessage: error.localizedDescription, dismissAfter: false)
+        showError(withTitle: nil, withMessage: error.localizedDescription)
     }
     
     func getErrorFromServer(_ error: WeatherError) {
         loadingView.isHidden = true
         brickImageView.isHidden = true
         currentLocationButton.isEnabled = true
-        showAlert(withTitle: error.cod, withMessage: error.message, dismissAfter: false)
+        showError(withTitle: error.cod, withMessage: error.message)
     }
 }
