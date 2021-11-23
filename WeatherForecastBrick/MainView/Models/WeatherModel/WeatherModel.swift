@@ -30,13 +30,14 @@ class WeatherModel: WeatherModelProtocol {
     private(set) var weather: WeatherEntity?
     private let locationService: LocationManagerProtocol
     
-    private var network = NetworkManager()
+    private var network: NetworkManagerProtocol
     private var currentCity = String()
     
-    init(locationService: LocationManagerProtocol) {
+    init(locationService: LocationManagerProtocol, network: NetworkManagerProtocol) {
         self.locationService = locationService
+        self.network = network
 
-        network.delegate = self
+        self.network.delegate = self
     }
     
     func updateWeatherAtCurrentLocation() {

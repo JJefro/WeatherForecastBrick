@@ -26,7 +26,7 @@ class MainViewController: UIViewController {
     
     var brickModel = BrickModel()
     
-    var model: WeatherModelProtocol = WeatherModel(locationService: LocationManager())
+    var model: WeatherModelProtocol = WeatherModel(locationService: LocationManager(), network: NetworkManager())
     
     override func viewDidLoad() {
         super.viewDidLoad()

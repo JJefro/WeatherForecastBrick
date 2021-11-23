@@ -30,3 +30,13 @@
 "searchView_TextFieldPlaceholder" = "Type city name...";
 
 "searchView_hideButton" = "Hide";
+
+"locationError_locationNotFound"              = "Location not found. Try again later or use the search.";
+"locationError_locationServicesDisabled"      = "Location services disabled. Enable them in settings.";
+"locationError_locationServicesNotAuthorized" = "Location services not authorized. Grant access in settings.";
+"locationError_unknownStatus"                 = "Unknown location status.";
+
+"networkError_badStatusCode"     = "Can't get data from the server.";
+"networkError_badURL"            = "Invalid URL";
+"networkError_badServerResponse" = "Can't get response from the server.";
+"networkError_noDataError"       = "No data was returned.";
