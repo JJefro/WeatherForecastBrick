@@ -10,17 +10,39 @@ import XCTest
 
 class WeatherForecastBrickTests: XCTestCase {
 
+    private var properties = MockProperties()
+
+    var locationManagerMock: LocationManagerMock!
+    var networkManagerMock: NetworkManagerMock!
+    var model: WeatherModel!
+
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        try super.setUpWithError()
+        locationManagerMock = LocationManagerMock()
+        networkManagerMock = NetworkManagerMock()
+        model = WeatherModel(locationService: locationManagerMock, network: networkManagerMock)
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        model = nil
+        networkManagerMock = nil
+        locationManagerMock = nil
+        try super.tearDownWithError()
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func test_updateWeatherAtCurrentLocation() throws {
+        model.updateWeatherAtCurrentLocation()
+        XCTAssertEqual(networkManagerMock.latitude, properties.lat)
+        XCTAssertEqual(networkManagerMock.longitude, properties.lon)
+        XCTAssertEqual(networkManagerMock.urlString, properties.URL)
+    }
+
+    func test_updateWeatherAtCity() throws {
+        model.updateWeatherAt(city: "Riga")
+        XCTAssertNil(networkManagerMock.latitude)
+        XCTAssertNil(networkManagerMock.longitude)
+        XCTAssertEqual(networkManagerMock.urlString, properties.cityURL)
+        XCTAssertEqual(networkManagerMock.city, "Riga")
     }
 
     func testPerformanceExample() throws {
@@ -28,32 +50,5 @@ class WeatherForecastBrickTests: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
         }
-    }
-}
-
-class MockNetworkManager: NetworkManagerProtocol {
-
-    weak var delegate: NetworkManagerDelegate?
-
-    let data: Data?
-    let response: URLResponse?
-    let error: Error?
-
-    init(data: Data?, response: URLResponse?, error: Error?) {
-        self.data = data
-        self.response = response
-        self.error = error
-    }
-
-    func getWeatherFrom(lat: Double, lon: Double, completion: @escaping WeatherCompletion) {
-
-    }
-
-    func getWeatherAt(city: NSString, completion: @escaping WeatherCompletion) {
-
-    }
-
-    func performRequest(with urlString: String, completion: @escaping Completion) {
-
     }
 }
