@@ -26,7 +26,7 @@ class MainViewController: UIViewController {
     var brickModel = BrickModel()
     var isSearchShown = false
     
-    var model: WeatherModelProtocol = WeatherModel(locationService: LocationManager(), network: NetworkManager())
+    var model: WeatherModelProtocol = WeatherModel(locationService: LocationManager(), networkService: NetworkManager())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +48,7 @@ class MainViewController: UIViewController {
     @IBAction func searchButtonTapped(_ sender: UIButton) {
         isSearchShown = true
         animateSearchView()
-        currentLocationButton.isEnabled.toggle()
-        showSearchView()
+        currentLocationButton.isEnabled = false
     }
 
     func showSearchView() {
@@ -57,11 +56,11 @@ class MainViewController: UIViewController {
         alert.addTextField { textField in
             textField.placeholder = R.string.localizable.searchView_TextFieldPlaceholder()
             textField.returnKeyType = .search
+            textField.accessibilityIdentifier = MainViewAccessibilityID.searchAlertTextField
         }
         let searchButton = UIAlertAction(title: R.string.localizable.searchView_searchButton(), style: .default) { [self] _ in
             guard let text = alert.textFields?[0].text else {return}
             model.updateWeatherAt(city: text)
-            print(text)
             isSearchShown = false
             animateSearchView()
         }
@@ -71,6 +70,9 @@ class MainViewController: UIViewController {
             isSearchShown = false
             animateSearchView()
         }
+        alert.view.accessibilityIdentifier = MainViewAccessibilityID.searchAlert
+        searchButton.accessibilityIdentifier = MainViewAccessibilityID.alertSearchButton
+        cancelButton.accessibilityIdentifier = MainViewAccessibilityID.alertCancelButton
         alert.addAction(searchButton)
         alert.addAction(cancelButton)
         self.present(alert, animated: true, completion: nil)

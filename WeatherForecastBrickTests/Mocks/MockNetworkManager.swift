@@ -22,31 +22,25 @@ final class NetworkManagerMock: NetworkManagerProtocol {
     var error: Error?
 
     func getWeatherFrom(lat: Double, lon: Double, completion: @escaping WeatherCompletion) {
-        latitude = lat
-        longitude = lon
-        performRequest(with: properties.URL, completion: completion)
+        self.latitude = lat
+        self.longitude = lon
+        performRequest(with: properties.URL) { result in
+           completion(result)
+        }
     }
 
     func getWeatherAt(city: NSString, completion: @escaping WeatherCompletion) {
         self.city = city
-        performRequest(with: properties.cityURL, completion: completion)
+        performRequest(with: properties.cityURL) { result in
+            completion(result)
+        }
     }
 
     func performRequest(with urlString: String, completion: @escaping Completion) {
         self.urlString = urlString
 
         guard let error = error else {
-
-            guard let city = city else {return}
-            let weatherEntity = WeatherEntity(
-                conditionID: 600,
-                visibility: 10_000,
-                cityName: "\(city)",
-                temperature: -99,
-                countryCode: "lv",
-                windSpeed: 5,
-                temperatureFeelsLike: -100)
-            completion(.success(weatherEntity))
+            completion(.success(properties.mockWeather!))
             return
         }
         completion(.failure(error))

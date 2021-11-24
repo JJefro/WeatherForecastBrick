@@ -22,7 +22,6 @@ struct MainViewAccessibility {
     
     let infoView    = "mainView_infoView"
     let loadingView = "mainView_loadingView"
-    let searchView  = "mainView_searchView"
 
     let infoViewTitleLabel      = "infoView_title"
     let infoViewWetBrickLabel   = "infoView_wetBrickLabel"
@@ -34,9 +33,10 @@ struct MainViewAccessibility {
     let infoViewWindyBrickLabel = "infoView_windyBrickLabel"
     let infoViewHideButton      = "infoView_hideButton"
 
-    let searchViewHideButton = "searchView_hideButton"
-    let searchViewTextField  = "searchView_textField"
-    let searchViewTitle      = "searchView_title"
+    let searchAlert  = "mainView_searchAlert"
+    let alertSearchButton = "mainView_searchAlert_searchButton"
+    let alertCancelButton = "mainView_searchAlert_cancelButton"
+    let searchAlertTextField = "mainView_searchAlert_textField"
 }
 
 struct TextLabels {
