@@ -79,7 +79,7 @@ class MainViewController: UIViewController {
     }
     
     private func addTapGesture(view: UIView) {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleSingleTap(_:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleSingleTap(_:)))
         view.addGestureRecognizer(tap)
     }
     
