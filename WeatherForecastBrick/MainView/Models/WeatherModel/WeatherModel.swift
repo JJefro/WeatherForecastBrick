@@ -26,18 +26,18 @@ protocol WeatherModelProtocol {
 class WeatherModel: WeatherModelProtocol {
 
     weak var delegate: WeatherModelDelegate?
-    
     private(set) var weather: WeatherEntity?
+
     private let locationService: LocationManagerProtocol
-    
-    private var network: NetworkManagerProtocol
+    private var networkService: NetworkManagerProtocol
+
     private var currentCity = String()
     
-    init(locationService: LocationManagerProtocol, network: NetworkManagerProtocol) {
+    init(locationService: LocationManagerProtocol, networkService: NetworkManagerProtocol) {
         self.locationService = locationService
-        self.network = network
+        self.networkService = networkService
 
-        self.network.delegate = self
+        self.networkService.delegate = self
     }
     
     func updateWeatherAtCurrentLocation() {
@@ -48,7 +48,7 @@ class WeatherModel: WeatherModelProtocol {
             case let .failure(error):
                 self.delegate?.weatherModel(self, errorOccured: error)
             case let .success(location):
-                self.network.getWeatherFrom(lat: location.lat, lon: location.lon) { weather in
+                self.networkService.getWeatherFrom(lat: location.lat, lon: location.lon) { weather in
                     self.transferWeatherToController(weather)
                 }
             }
@@ -67,7 +67,7 @@ class WeatherModel: WeatherModelProtocol {
             city = city.replacingOccurrences(of: " ", with: "%20") as NSString
 
             delegate?.weatherModel(self, willUpdate: weather)
-            network.getWeatherAt(city: city) { [self] weather in
+            networkService.getWeatherAt(city: city) { [self] weather in
                 transferWeatherToController(weather)
             }
         } else {
@@ -78,6 +78,7 @@ class WeatherModel: WeatherModelProtocol {
     private func transferWeatherToController(_ weather: Result<WeatherEntity, Error>) {
         switch weather {
         case let .success(weather):
+            self.weather = weather
             self.delegate?.weatherModel(self, didUpdate: weather)
             self.currentCity = weather.cityName
         case let .failure(error):

@@ -15,15 +15,17 @@ class WeatherForecastBrickTests: XCTestCase {
     var locationManagerMock: LocationManagerMock!
     var networkManagerMock: NetworkManagerMock!
     var model: WeatherModel!
+    var sut: MainViewController!
 
     override func setUpWithError() throws {
         try super.setUpWithError()
         locationManagerMock = LocationManagerMock()
         networkManagerMock = NetworkManagerMock()
-        model = WeatherModel(locationService: locationManagerMock, network: networkManagerMock)
+        model = WeatherModel(locationService: locationManagerMock, networkService: networkManagerMock)
     }
 
     override func tearDownWithError() throws {
+        sut = nil
         model = nil
         networkManagerMock = nil
         locationManagerMock = nil
@@ -32,17 +34,14 @@ class WeatherForecastBrickTests: XCTestCase {
 
     func test_updateWeatherAtCurrentLocation() throws {
         model.updateWeatherAtCurrentLocation()
-        XCTAssertEqual(networkManagerMock.latitude, properties.lat)
-        XCTAssertEqual(networkManagerMock.longitude, properties.lon)
-        XCTAssertEqual(networkManagerMock.urlString, properties.URL)
+        let result = model.weather
+        XCTAssertEqual(result, properties.mockWeather)
     }
 
     func test_updateWeatherAtCity() throws {
-        model.updateWeatherAt(city: "Riga")
-        XCTAssertNil(networkManagerMock.latitude)
-        XCTAssertNil(networkManagerMock.longitude)
-        XCTAssertEqual(networkManagerMock.urlString, properties.cityURL)
-        XCTAssertEqual(networkManagerMock.city, "Riga")
+        model.updateWeatherAt(city: properties.city as String)
+        let result = model.weather
+        XCTAssertEqual(result, properties.mockWeather)
     }
 
     func testPerformanceExample() throws {

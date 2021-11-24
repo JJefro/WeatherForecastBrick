@@ -24,7 +24,6 @@ class WeatherForecastBrickUITests: XCTestCase {
 
     var infoView: XCUIElement!
     var loadingView: XCUIElement!
-    var searchView: XCUIElement!
 
     var infoViewTitleLabel: XCUIElement!
     var infoViewWetBrickLabel: XCUIElement!
@@ -36,9 +35,10 @@ class WeatherForecastBrickUITests: XCTestCase {
     var infoViewWindyBrickLabel: XCUIElement!
     var infoViewHideButton: XCUIElement!
 
-    var searchViewHideButton: XCUIElement!
-    var searchViewTextField: XCUIElement!
-    var searchViewTitle: XCUIElement!
+    var searchAlert: XCUIElement!
+    var alertSearchButton: XCUIElement!
+    var alertCancelButton: XCUIElement!
+    var searchAlertTextField: XCUIElement!
 
     override func setUpWithError() throws {
         continueAfterFailure = false
@@ -56,7 +56,6 @@ class WeatherForecastBrickUITests: XCTestCase {
 
         self.infoView = app.otherElements[accessibility.infoView]
         self.loadingView = app.otherElements[accessibility.loadingView]
-        self.searchView = app.otherElements[accessibility.searchView]
 
         self.infoViewTitleLabel = infoView.staticTexts[accessibility.infoViewTitleLabel]
         self.infoViewWetBrickLabel = infoView.staticTexts[accessibility.infoViewWetBrickLabel]
@@ -68,9 +67,10 @@ class WeatherForecastBrickUITests: XCTestCase {
         self.infoViewWindyBrickLabel = infoView.staticTexts[accessibility.infoViewWindyBrickLabel]
         self.infoViewHideButton = infoView.buttons[accessibility.infoViewHideButton]
 
-        self.searchViewHideButton = searchView.buttons[accessibility.searchViewHideButton]
-        self.searchViewTextField = searchView.textFields[accessibility.searchViewTextField]
-        self.searchViewTitle = searchView.staticTexts[accessibility.searchViewTitle]
+        self.searchAlert = app.alerts[accessibility.searchAlert]
+        self.alertSearchButton = searchAlert.buttons[accessibility.alertSearchButton]
+        self.alertCancelButton = searchAlert.buttons[accessibility.alertCancelButton]
+        self.searchAlertTextField = searchAlert.textFields[accessibility.searchAlertTextField]
     }
 
     func testMainView_ThePresenceOfElements() throws {
@@ -101,8 +101,10 @@ class WeatherForecastBrickUITests: XCTestCase {
 
     func testSearchView_ThePresenceOfElements() throws {
         searchButton.tap()
-        XCTAssertTrue(searchViewTextField.exists)
-        XCTAssertTrue(searchViewHideButton.exists)
+        XCTAssertTrue(searchAlert.exists)
+        XCTAssertTrue(alertSearchButton.exists)
+        XCTAssertTrue(alertCancelButton.exists)
+        XCTAssertTrue(searchAlertTextField.exists)
     }
 
     func testInfoView_CheckBrickInformationLabels_EnglishLocalization() throws {
@@ -120,8 +122,8 @@ class WeatherForecastBrickUITests: XCTestCase {
     
     func testSearchView_TextField_EnglishLocalization() throws {
         searchButton.tap()
-        searchViewTextField.tap()
-        XCTAssertEqual(searchViewTextField.placeholderValue, label.searchViewTextfieldPlaceholder)
-        XCTAssertEqual(searchViewTitle.label, label.searchViewTitle)
+        searchAlertTextField.tap()
+        XCTAssertEqual(searchAlertTextField.placeholderValue, label.searchViewTextfieldPlaceholder)
+        XCTAssertEqual(searchAlert.label, label.searchViewTitle)
     }
 }
