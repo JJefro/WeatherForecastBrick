@@ -16,12 +16,10 @@ extension MainViewController {
         infoTitle.accessibilityIdentifier = MainViewAccessibilityID.infoTitle
         weatherConditionLabel.accessibilityIdentifier = MainViewAccessibilityID.weatherConditionLabel
         areaLabel.accessibilityIdentifier = MainViewAccessibilityID.areaLabel
-        searchButton.accessibilityIdentifier = MainViewAccessibilityID.searchButton
         currentLocationButton.accessibilityIdentifier = MainViewAccessibilityID.currentLocationButton
-
+        searchButton.accessibilityIdentifier = MainViewAccessibilityID.searchButton
         infoView.accessibilityIdentifier = MainViewAccessibilityID.infoView
         loadingView.accessibilityIdentifier = MainViewAccessibilityID.loadingView
-        searchView.accessibilityIdentifier = MainViewAccessibilityID.searchView
     }
 }
 
@@ -40,7 +38,6 @@ struct MainViewAccessibilityID {
     static let currentLocationButton = "mainView_currentLocationButton"
     static let infoView = "mainView_infoView"
     static let loadingView = "mainView_loadingView"
-    static let searchView = "mainView_searchView"
 
     // MARK: - InfoView Elements
     static let infoViewTitleLabel = "infoView_title"
@@ -53,8 +50,9 @@ struct MainViewAccessibilityID {
     static let infoViewWindyBrickLabel = "infoView_windyBrickLabel"
     static let infoViewHideButton = "infoView_hideButton"
 
-    // MARK: - SearchView Elements
-    static let searchViewHideButton = "searchView_hideButton"
-    static let searchViewTextField = "searchView_textField"
-    static let searchViewTitle = "searchView_title"
+    // MARK: - SearchAlert Elements
+    static let searchAlert  = "mainView_searchAlert"
+    static let alertSearchButton = "mainView_searchAlert_searchButton"
+    static let alertCancelButton = "mainView_searchAlert_cancelButton"
+    static let searchAlertTextField = "mainView_searchAlert_textField"
 }

@@ -48,10 +48,6 @@ struct WeatherData: Codable {
 
     private enum CodingKeys: String, CodingKey {
         case cityName = "name"
-        case weather
-        case main
-        case visibility
-        case wind
-        case sys
+        case weather, main, visibility, wind, sys
     }
 }

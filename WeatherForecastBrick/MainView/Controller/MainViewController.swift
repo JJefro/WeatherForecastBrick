@@ -22,11 +22,11 @@ class MainViewController: UIViewController {
     
     var infoView = InfoView()
     var loadingView = LoadingView()
-    var searchView = SearchView()
     
     var brickModel = BrickModel()
+    var isSearchShown = false
     
-    var model: WeatherModelProtocol = WeatherModel(locationService: LocationManager(), network: NetworkManager())
+    var model: WeatherModelProtocol = WeatherModel(locationService: LocationManager(), networkService: NetworkManager())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,9 +46,36 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func searchButtonTapped(_ sender: UIButton) {
-        searchView.isHidden.toggle()
-        currentLocationButton.isEnabled.toggle()
+        isSearchShown = true
         animateSearchView()
+        currentLocationButton.isEnabled = false
+    }
+
+    func showSearchView() {
+        let alert = UIAlertController(title: R.string.localizable.searchView_title(), message: nil, preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.placeholder = R.string.localizable.searchView_TextFieldPlaceholder()
+            textField.returnKeyType = .search
+            textField.accessibilityIdentifier = MainViewAccessibilityID.searchAlertTextField
+        }
+        let searchButton = UIAlertAction(title: R.string.localizable.searchView_searchButton(), style: .default) { [self] _ in
+            guard let text = alert.textFields?[0].text else {return}
+            model.updateWeatherAt(city: text)
+            isSearchShown = false
+            animateSearchView()
+        }
+        let cancelButton = UIAlertAction(title: R.string.localizable.searchView_cancelButton(), style: .cancel) { [self] _ in
+            currentLocationButton.isEnabled = true
+            model.updateWeatherAtCity()
+            isSearchShown = false
+            animateSearchView()
+        }
+        alert.view.accessibilityIdentifier = MainViewAccessibilityID.searchAlert
+        searchButton.accessibilityIdentifier = MainViewAccessibilityID.alertSearchButton
+        cancelButton.accessibilityIdentifier = MainViewAccessibilityID.alertCancelButton
+        alert.addAction(searchButton)
+        alert.addAction(cancelButton)
+        self.present(alert, animated: true, completion: nil)
     }
     
     private func addTapGesture(view: UIView) {
@@ -93,22 +120,9 @@ class MainViewController: UIViewController {
         animateInfoView()
     }
 
-    @objc func searchViewHideButtonTapped(_ sender: UIButton) {
-        searchView.isHidden = true
-        currentLocationButton.isEnabled = true
-        model.updateWeatherAtCity()
-        animateSearchView()
-    }
-
-    func showAlert(withTitle title: String?, withMessage message: String?, dismissAfter: Bool) {
+    func showError(withTitle title: String?, withMessage message: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        if !dismissAfter {
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
-        } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                alert.dismiss(animated: true, completion: nil)
-            }
-        }
+        alert.addAction(UIAlertAction(title: R.string.localizable.errorAlert_actionButton(), style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
 }
