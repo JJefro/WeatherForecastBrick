@@ -15,7 +15,6 @@ class WeatherForecastBrickTests: XCTestCase {
     var locationManagerMock: LocationManagerMock!
     var networkManagerMock: NetworkManagerMock!
     var model: WeatherModel!
-    var sut: MainViewController!
 
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -25,7 +24,6 @@ class WeatherForecastBrickTests: XCTestCase {
     }
 
     override func tearDownWithError() throws {
-        sut = nil
         model = nil
         networkManagerMock = nil
         locationManagerMock = nil

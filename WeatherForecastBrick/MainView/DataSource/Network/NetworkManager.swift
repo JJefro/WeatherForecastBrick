@@ -72,6 +72,12 @@ class NetworkManager: NetworkManagerProtocol {
                                 completion(.success(weather))
                             }
                         }
+                    } else if response.statusCode / 100 == 4 {
+                        if let errorData = self.catchError(safeData) {
+                            DispatchQueue.main.async { [self] in
+                                delegate?.getErrorFromServer(errorData)
+                            }
+                        }
                     } else {
                         DispatchQueue.main.async {
                             completion(.failure(NetworkError.badStatusCode))

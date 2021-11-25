@@ -48,10 +48,9 @@ class MainViewController: UIViewController {
     @IBAction func searchButtonTapped(_ sender: UIButton) {
         isSearchShown = true
         animateSearchView()
-        currentLocationButton.isEnabled = false
     }
 
-    func showSearchView() {
+    func showSearchAlert() {
         let alert = UIAlertController(title: R.string.localizable.searchView_title(), message: nil, preferredStyle: .alert)
         alert.addTextField { textField in
             textField.placeholder = R.string.localizable.searchView_TextFieldPlaceholder()
@@ -59,13 +58,12 @@ class MainViewController: UIViewController {
             textField.accessibilityIdentifier = MainViewAccessibilityID.searchAlertTextField
         }
         let searchButton = UIAlertAction(title: R.string.localizable.searchView_searchButton(), style: .default) { [self] _ in
-            guard let text = alert.textFields?[0].text else {return}
+            guard let text = alert.textFields?.first?.text else {return}
             model.updateWeatherAt(city: text)
             isSearchShown = false
             animateSearchView()
         }
         let cancelButton = UIAlertAction(title: R.string.localizable.searchView_cancelButton(), style: .cancel) { [self] _ in
-            currentLocationButton.isEnabled = true
             model.updateWeatherAtCity()
             isSearchShown = false
             animateSearchView()

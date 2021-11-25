@@ -20,7 +20,7 @@ extension MainViewController {
                 infoImageView.transform = CGAffineTransform(translationX: 0, y: 300)
                 infoTitle.transform = CGAffineTransform(translationX: 0, y: 300)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
-                    showSearchView()
+                    showSearchAlert()
                 }
             } else {
                 returnElementsBack()
