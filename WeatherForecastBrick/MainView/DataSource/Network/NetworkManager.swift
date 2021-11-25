@@ -82,6 +82,7 @@ class NetworkManager: NetworkManagerProtocol {
                         DispatchQueue.main.async {
                             completion(.failure(NetworkError.badStatusCode))
                         }
+                        return
                     }
                 } else {
                     DispatchQueue.main.async {
