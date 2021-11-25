@@ -40,5 +40,5 @@
 
 "networkError_badStatusCode"     = "Can't get data from the server.";
 "networkError_badURL"            = "Invalid URL";
-"networkError_badServerResponse" = "Can't get response from the server.";
+"networkError_badServerResponse" = "Check your internet connection.";
 "networkError_noDataError"       = "No data was returned.";
