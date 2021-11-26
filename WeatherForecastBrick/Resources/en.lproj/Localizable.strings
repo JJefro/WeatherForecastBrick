@@ -6,9 +6,6 @@
 
  */
 
-"mainView_title" = "Weather Forecast Brick";
-"detailsView_title" = "Weather";
-
 "infoView_title"            = "INFO";
 "infoView_rain_label"       = "Brick is wet - raining";
 "infoView_sun_label"        = "Brick is dry - sunny";
