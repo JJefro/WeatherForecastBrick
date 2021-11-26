@@ -19,7 +19,6 @@ extension MainViewController {
         
         brickImageView.layer.zPosition = 1
         infoTitle.text = R.string.localizable.infoView_title()
-        title = R.string.localizable.mainView_title()
         
         addTargetsForElements()
     }
