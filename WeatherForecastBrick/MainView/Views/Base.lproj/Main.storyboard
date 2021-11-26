@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tMm-C2-1xc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -127,11 +128,21 @@
                             <constraint firstAttribute="bottom" secondItem="6Sv-us-wgo" secondAttribute="bottom" id="vDA-0t-ZgE"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Tbj-id-pm8">
+                        <barButtonItem key="rightBarButtonItem" id="KAV-dM-aPQ">
+                            <imageReference key="image" image="list.bullet" catalog="system" symbolScale="large"/>
+                            <color key="tintColor" name="MainView/textColor"/>
+                            <connections>
+                                <action selector="showDetailsButton:" destination="BYZ-38-t0r" id="56B-3d-WwM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="areaLabel" destination="cIJ-G5-Fsc" id="GMc-Qg-TBU"/>
                         <outlet property="brickHeight" destination="PFp-U8-jVG" id="711-vb-VdZ"/>
                         <outlet property="brickImageView" destination="dVz-60-Ax4" id="4D5-GF-ago"/>
                         <outlet property="currentLocationButton" destination="tcb-sg-wTf" id="SxK-Lo-ViS"/>
+                        <outlet property="detailsButton" destination="KAV-dM-aPQ" id="o5o-aH-0DQ"/>
                         <outlet property="infoImageView" destination="QKF-ef-83i" id="2KJ-U2-d5P"/>
                         <outlet property="infoTitle" destination="czv-Eh-WW2" id="izS-Vf-v25"/>
                         <outlet property="searchButton" destination="G27-OP-6ze" id="CF5-kS-nEh"/>
@@ -141,13 +152,48 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-13" y="-35"/>
+            <point key="canvasLocation" x="1807.2463768115942" y="-35.491071428571423"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="SQA-j8-92x">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tMm-C2-1xc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sOf-AP-crY">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="22"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="22"/>
+                        </textAttributes>
+                        <navigationBarAppearance key="standardAppearance" backgroundEffect="systemUltraThinMaterialDark">
+                            <textAttributes key="titleTextAttributes">
+                                <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="22"/>
+                            </textAttributes>
+                        </navigationBarAppearance>
+                        <navigationBarAppearance key="scrollEdgeAppearance" backgroundEffect="systemUltraThinMaterialDark">
+                            <textAttributes key="titleTextAttributes">
+                                <fontDescription key="fontDescription" name="SFProDisplay-Light" family="SF Pro Display" pointSize="17"/>
+                            </textAttributes>
+                        </navigationBarAppearance>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="jEV-aV-585"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YVu-lK-yJr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="897.10144927536237" y="-35.491071428571423"/>
         </scene>
     </scenes>
     <resources>
         <image name="MainView/Brick/normalBrick" width="168" height="341"/>
         <image name="MainView/background" width="375" height="811"/>
         <image name="MainView/infoView/infoBackgroundImage" width="175" height="64"/>
+        <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="paperplane.fill" catalog="system" width="128" height="118"/>
         <namedColor name="MainView/textColor">

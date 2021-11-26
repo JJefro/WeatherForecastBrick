@@ -19,14 +19,24 @@ class MainViewController: UIViewController {
     @IBOutlet weak var areaLabel: UILabel!
     @IBOutlet weak var searchButton: CardButton!
     @IBOutlet weak var currentLocationButton: CardButton!
+    @IBOutlet weak var detailsButton: UIBarButtonItem!
     
     var infoView = InfoView()
     var loadingView = LoadingView()
     
     var brickModel = BrickModel()
-    var isSearchShown = false
-    
-    var model: WeatherModelProtocol = WeatherModel(locationService: LocationManager(), networkService: NetworkManager())
+    var model: WeatherModelProtocol = WeatherModel(
+        locationService: LocationManager(),
+        networkService: NetworkManager())
+
+    var isSearchShown = false {
+        didSet {
+            if isSearchShown {
+                animateSearchView()
+                showSearchAlert()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +47,11 @@ class MainViewController: UIViewController {
 
         brickModel.brickView = brickImageView
         brickModel.initialBrickHeight = brickHeight.constant
-        
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
         model.updateWeatherAtCurrentLocation()
     }
 
@@ -47,7 +61,10 @@ class MainViewController: UIViewController {
     
     @IBAction func searchButtonTapped(_ sender: UIButton) {
         isSearchShown = true
-        animateSearchView()
+    }
+    @IBAction func showDetailsButton(_ sender: UIBarButtonItem) {
+        let detailsVC = DetailsViewController()
+        navigationController?.pushViewController(detailsVC, animated: true)
     }
 
     func showSearchAlert() {

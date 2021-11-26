@@ -19,9 +19,6 @@ extension MainViewController {
                 weatherConditionLabel.transform = CGAffineTransform(translationX: -300, y: 0)
                 infoImageView.transform = CGAffineTransform(translationX: 0, y: 300)
                 infoTitle.transform = CGAffineTransform(translationX: 0, y: 300)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
-                    showSearchAlert()
-                }
             } else {
                 returnElementsBack()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
