@@ -33,9 +33,9 @@ struct MainViewAccessibility {
     let infoViewWindyBrickLabel = "infoView_windyBrickLabel"
     let infoViewHideButton      = "infoView_hideButton"
 
-    let searchAlert  = "mainView_searchAlert"
-    let alertSearchButton = "mainView_searchAlert_searchButton"
-    let alertCancelButton = "mainView_searchAlert_cancelButton"
+    let searchAlert          = "mainView_searchAlert"
+    let alertSearchButton    = "mainView_searchAlert_searchButton"
+    let alertCancelButton    = "mainView_searchAlert_cancelButton"
     let searchAlertTextField = "mainView_searchAlert_textField"
 }
 
