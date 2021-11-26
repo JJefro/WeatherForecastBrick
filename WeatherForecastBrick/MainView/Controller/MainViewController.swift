@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreLocation
 
 class MainViewController: UIViewController {
     
@@ -37,6 +36,14 @@ class MainViewController: UIViewController {
             }
         }
     }
+
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,10 +68,6 @@ class MainViewController: UIViewController {
     
     @IBAction func searchButtonTapped(_ sender: UIButton) {
         isSearchShown = true
-    }
-    @IBAction func showDetailsButton(_ sender: UIBarButtonItem) {
-        let detailsVC = DetailsViewController()
-        navigationController?.pushViewController(detailsVC, animated: true)
     }
 
     func showSearchAlert() {

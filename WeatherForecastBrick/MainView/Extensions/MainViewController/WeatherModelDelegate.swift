@@ -12,7 +12,6 @@ extension MainViewController: WeatherModelDelegate {
     
     func weatherModel(_ weatherModel: WeatherModelProtocol, willUpdate weather: WeatherEntity?) {
         loadingView.isHidden = false
-        detailsButton.isEnabled = false
     }
 
     func weatherModel(_ weatherModel: WeatherModelProtocol, didUpdate weather: WeatherEntity) {
@@ -26,7 +25,6 @@ extension MainViewController: WeatherModelDelegate {
         } completion: { [self] _ in
             searchButton.isEnabled = true
             loadingView.isHidden = true
-            detailsButton.isEnabled = true
             currentLocationButton.isEnabled = true
             brickImageView.isHidden = false
             UIView.transition(with: brickImageView, duration: 0.5, options: [.transitionCrossDissolve]) { [self] in
@@ -37,18 +35,17 @@ extension MainViewController: WeatherModelDelegate {
 
     func weatherModel(_ weatherModel: WeatherModelProtocol, errorOccured error: Error) {
         // If we have a problem with internet connection, brick disappears and we present alert with error.
-        isElementsAvailable(true)
+        hideElements(true)
         showError(withTitle: nil, withMessage: error.localizedDescription)
     }
     
     func getErrorFromServer(_ error: WeatherError) {
-        isElementsAvailable(true)
+        hideElements(true)
         showError(withTitle: error.cod, withMessage: error.message)
     }
 
-    private func isElementsAvailable(_ isAvailable: Bool) {
+    private func hideElements(_ isAvailable: Bool) {
         loadingView.isHidden = isAvailable
-        detailsButton.isEnabled = isAvailable
         brickImageView.isHidden = isAvailable
         currentLocationButton.isEnabled = isAvailable
     }
