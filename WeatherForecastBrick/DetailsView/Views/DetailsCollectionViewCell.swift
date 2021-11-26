@@ -17,24 +17,15 @@ class DetailsCollectionViewCell: UICollectionViewCell {
     private var temperatureLabel = UILabel()
     private var weatherConditionLabel = UILabel()
 
-    var spinner = NVActivityIndicatorView(
-            frame: .zero,
-            type: .pacman,
-            color: UITraitCollection.current.userInterfaceStyle == .dark ? .white : .black,
-            padding: 0
-        )
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(cityName)
         contentView.addSubview(temperatureLabel)
         contentView.addSubview(weatherConditionLabel)
-        contentView.addSubview(spinner)
         contentView.clipsToBounds = true
         configureCityNameLabel()
         configureTemperatureLabel()
         configureWeatherConditionLabel()
-        setSpinnerConstraints()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -89,14 +80,6 @@ class DetailsCollectionViewCell: UICollectionViewCell {
         weatherConditionLabel.snp.makeConstraints { make in
             make.left.equalTo(contentView).inset(20)
             make.bottom.equalTo(contentView).inset(20)
-        }
-    }
-
-    // MARK: - Spinner Constraints
-    private func setSpinnerConstraints() {
-        spinner.snp.makeConstraints { make in
-            make.center.equalTo(contentView)
-            make.height.width.equalTo(30)
         }
     }
 }

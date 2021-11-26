@@ -407,10 +407,10 @@
 		97F8E182275039760062D26A /* DetailsView */ = {
 			isa = PBXGroup;
 			children = (
-				97B346A22750CEFE00A4C90F /* Models */,
 				97F8E18B27503AEC0062D26A /* DataSource */,
 				97F8E18727503AA20062D26A /* Extensions */,
 				97B3469F2750C5E900A4C90F /* Views */,
+				97B346A22750CEFE00A4C90F /* Models */,
 				97F8E183275039850062D26A /* Controller */,
 			);
 			path = DetailsView;
