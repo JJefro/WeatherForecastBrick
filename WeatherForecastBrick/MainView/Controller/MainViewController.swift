@@ -18,7 +18,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var areaLabel: UILabel!
     @IBOutlet weak var searchButton: CardButton!
     @IBOutlet weak var currentLocationButton: CardButton!
-    @IBOutlet weak var detailsButton: UIBarButtonItem!
     
     var infoView = InfoView()
     var loadingView = LoadingView()
@@ -50,7 +49,6 @@ class MainViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = false
         model.updateWeatherAtCurrentLocation()
     }
 

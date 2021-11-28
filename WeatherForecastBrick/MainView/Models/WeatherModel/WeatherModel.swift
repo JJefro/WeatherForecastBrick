@@ -79,10 +79,14 @@ class WeatherModel: WeatherModelProtocol {
         switch weather {
         case let .success(weather):
             self.weather = weather
-            self.delegate?.weatherModel(self, didUpdate: weather)
             self.currentCity = weather.cityName
+            DispatchQueue.main.async { [self] in
+                delegate?.weatherModel(self, didUpdate: weather)
+            }
         case let .failure(error):
-            self.delegate?.weatherModel(self, errorOccured: error)
+            DispatchQueue.main.async { [self] in
+                delegate?.weatherModel(self, errorOccured: error)
+            }
         }
     }
 }

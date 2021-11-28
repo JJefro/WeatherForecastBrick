@@ -24,7 +24,6 @@
 		97AD56E4272220EF00627130 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AD56E3272220EF00627130 /* WeatherModel.swift */; };
 		97AD56E62722211800627130 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AD56E52722211800627130 /* WeatherData.swift */; };
 		97B18362272B19480017937E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 97B18364272B19480017937E /* Localizable.strings */; };
-		97B346AD2750FCFE00A4C90F /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 97B346AC2750FCFE00A4C90F /* IQKeyboardManagerSwift */; };
 		97C448222722C31A00332A12 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 97C448212722C31A00332A12 /* Secrets.plist */; };
 		97C448262722C45B00332A12 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C448252722C45B00332A12 /* Secrets.swift */; };
 		97C98D87274B9D9200E01053 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C98D86274B9D9200E01053 /* NetworkError.swift */; };
@@ -148,7 +147,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C52F1A186FC6213E6AB0B7F1 /* Pods_WeatherForecastBrick.framework in Frameworks */,
-				97B346AD2750FCFE00A4C90F /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,7 +472,6 @@
 			);
 			name = WeatherForecastBrick;
 			packageProductDependencies = (
-				97B346AC2750FCFE00A4C90F /* IQKeyboardManagerSwift */,
 			);
 			productName = WeatherForecastBrick;
 			productReference = 97D6D0FB2721DC3100056C07 /* WeatherForecastBrick.app */;
@@ -514,7 +511,6 @@
 			mainGroup = 97D6D0F22721DC3000056C07;
 			packageReferences = (
 				97D2960827391A0E008DF1DE /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
-				97B346AB2750FCFE00A4C90F /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 97D6D0FC2721DC3100056C07 /* Products */;
 			projectDirPath = "";
@@ -1048,14 +1044,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		97B346AB2750FCFE00A4C90F /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/JJefro/IQKeyboardManager";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
-			};
-		};
 		97D2960827391A0E008DF1DE /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JJefro/swift-snapshot-testing";
@@ -1067,11 +1055,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		97B346AC2750FCFE00A4C90F /* IQKeyboardManagerSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 97B346AB2750FCFE00A4C90F /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
-			productName = IQKeyboardManagerSwift;
-		};
 		97D2960927391A0E008DF1DE /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 97D2960827391A0E008DF1DE /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
