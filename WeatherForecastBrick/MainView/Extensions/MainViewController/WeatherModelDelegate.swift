@@ -38,8 +38,8 @@ extension MainViewController: WeatherModelDelegate {
         hideElements(true)
         showError(withTitle: nil, withMessage: error.localizedDescription)
     }
-    
-    func getErrorFromServer(_ error: WeatherError) {
+
+    func weatherModel(_ weatherModel: WeatherModelProtocol, didCatchAnErrorFromServer error: WeatherError) {
         hideElements(true)
         showError(withTitle: error.cod, withMessage: error.message)
     }
