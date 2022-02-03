@@ -15,6 +15,7 @@
 		97274123274D07C100F9D042 /* MockProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97274122274D07C100F9D042 /* MockProperties.swift */; };
 		972F56942728405D00B3555F /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F56932728405D00B3555F /* InfoView.swift */; };
 		972F56962728722900B3555F /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972F56952728722900B3555F /* Animations.swift */; };
+		974E282D27ABD2F900185CFE /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 974E282C27ABD2F900185CFE /* SnapshotTesting */; };
 		97550DBE2737B5FB00B3419C /* MainView + AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97550DBD2737B5FB00B3419C /* MainView + AccessibilityIdentifiers.swift */; };
 		97550DC02737BAC500B3419C /* MainView + AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97550DBF2737BAC500B3419C /* MainView + AccessibilityIdentifiers.swift */; };
 		977F6D13273FC67C00E192D1 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977F6D12273FC67C00E192D1 /* NetworkManager.swift */; };
@@ -31,7 +32,6 @@
 		97CA48142725C83E002C4A0B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CA48132725C83E002C4A0B /* LocationManager.swift */; };
 		97CD08662735A94500CACB0D /* BrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CD08652735A94500CACB0D /* BrickView.swift */; };
 		97D2960727390DE1008DF1DE /* WeatherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D2960627390DE1008DF1DE /* WeatherError.swift */; };
-		97D2960A27391A0E008DF1DE /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 97D2960927391A0E008DF1DE /* SnapshotTesting */; };
 		97D6D0FF2721DC3100056C07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D6D0FE2721DC3100056C07 /* AppDelegate.swift */; };
 		97D6D1012721DC3100056C07 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D6D1002721DC3100056C07 /* SceneDelegate.swift */; };
 		97D6D1032721DC3100056C07 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D6D1022721DC3100056C07 /* MainViewController.swift */; };
@@ -138,7 +138,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97D2960A27391A0E008DF1DE /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C52F1A186FC6213E6AB0B7F1 /* Pods_WeatherForecastBrick.framework in Frameworks */,
+				974E282D27ABD2F900185CFE /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,7 +448,6 @@
 			);
 			name = WeatherForecastBrickTests;
 			packageProductDependencies = (
-				97D2960927391A0E008DF1DE /* SnapshotTesting */,
 			);
 			productName = WeatherForecastBrickTests;
 			productReference = 97921A69273855DF00932B07 /* WeatherForecastBrickTests.xctest */;
@@ -472,6 +471,7 @@
 			);
 			name = WeatherForecastBrick;
 			packageProductDependencies = (
+				974E282C27ABD2F900185CFE /* SnapshotTesting */,
 			);
 			productName = WeatherForecastBrick;
 			productReference = 97D6D0FB2721DC3100056C07 /* WeatherForecastBrick.app */;
@@ -510,7 +510,7 @@
 			);
 			mainGroup = 97D6D0F22721DC3000056C07;
 			packageReferences = (
-				97D2960827391A0E008DF1DE /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				974E282B27ABD2F800185CFE /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 97D6D0FC2721DC3100056C07 /* Products */;
 			projectDirPath = "";
@@ -1044,20 +1044,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		97D2960827391A0E008DF1DE /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+		974E282B27ABD2F800185CFE /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JJefro/swift-snapshot-testing";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		97D2960927391A0E008DF1DE /* SnapshotTesting */ = {
+		974E282C27ABD2F900185CFE /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 97D2960827391A0E008DF1DE /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			package = 974E282B27ABD2F800185CFE /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */
